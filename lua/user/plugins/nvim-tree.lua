@@ -99,7 +99,7 @@ NvimTree.opts = {
 
 NvimTree.config = function(_, opts)
     require("nvim-tree").setup(opts)
-    vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = autocmds.vim_enter })
+    -- vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = autocmds.vim_enter })
 end
 
 return NvimTree
