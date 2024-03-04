@@ -186,13 +186,17 @@ LspZero.config = function(_, opts)
 
                 require('lspconfig').lua_ls.setup(lua_opts)
             end,
-            -- clangd = function()
-            --   require('lspconfig').clangd.setup({
-            --     on_init = function(client)
-            --       client.server_capabilities.semanticTokensProvider = nil
-            --     end,
-            --   })
-            -- end
+            clangd = function()
+                local clangd_opts = {
+                    on_attach = opts.on_attach,
+                    cmd = {
+                        "clangd",
+                        "--offset-encoding=utf-16",
+                    },
+                }
+
+                require('lspconfig').clangd.setup(clangd_opts)
+            end
         },
     })
 end
