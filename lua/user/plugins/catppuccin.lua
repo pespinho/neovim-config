@@ -23,6 +23,11 @@ local highlight_factories = {
             BufferInactiveSign = { bg = colors.mantle, fg = colors.overlay0 },
             BufferInactiveMod = { bg = colors.mantle, fg = colors.overlay0 },
         }
+    end,
+    trouble = function(colors)
+        return {
+            TroubleNormal = { bg = colors.mantle, fg = colors.text },
+        }
     end
 }
 
@@ -62,7 +67,7 @@ Catppuccin.opts = {
         leap = true,
         mason = true,
         -- treesitter_context = true,
-        -- lsp_trouble = true,
+        lsp_trouble = true,
         which_key = true
     },
     custom_highlights = custom_highlights,
