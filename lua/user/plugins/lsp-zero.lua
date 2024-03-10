@@ -2,6 +2,49 @@
 -- LOCALS
 -------------------------------------------------------------------------------
 
+local map = vim.keymap.set
+
+local function apply(curr, win)
+    local newName = vim.trim(vim.fn.getline ".")
+    vim.api.nvim_win_close(win, true)
+
+    if #newName > 0 and newName ~= curr then
+        local params = vim.lsp.util.make_position_params()
+        params.newName = newName
+
+        vim.lsp.buf_request(0, "textDocument/rename", params)
+    end
+end
+
+local function renamer()
+    local currName = vim.fn.expand "<cword>" .. " "
+
+    local win = require("plenary.popup").create(currName, {
+        title = "LSP Rename",
+        style = "minimal",
+        borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+        relative = "cursor",
+        highlight = "TelescopePromptNormal",
+        borderhighlight = "TelescopeBorder",
+        titlehighlight = "TelescopeTitle",
+        focusable = true,
+        width = 25,
+        height = 1,
+        line = "cursor+2",
+        col = "cursor-1",
+    })
+
+    vim.cmd "normal A"
+    vim.cmd "startinsert"
+
+    map({ "i", "n" }, "<Esc>", "<cmd>q<CR>", { buffer = 0 })
+
+    map({ "i", "n" }, "<CR>", function()
+        apply(currName, win)
+        vim.cmd.stopinsert()
+    end, { buffer = 0 })
+end
+
 local function on_attach(client, bufnr)
     vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end,
         { desc = "LSP declaration", buffer = bufnr })
@@ -26,7 +69,7 @@ local function on_attach(client, bufnr)
     vim.keymap.set("n", "<leader>D", require('telescope.builtin').lsp_type_definitions,
         { desc = "LSP definition type", buffer = bufnr })
 
-    vim.keymap.set("n", "<leader>ra", function() vim.lsp.buf.rename() end,
+    vim.keymap.set("n", "<leader>ra", function() renamer() end,
         { desc = "LSP rename", buffer = bufnr })
 
     vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end,
