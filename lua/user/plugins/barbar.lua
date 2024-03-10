@@ -61,10 +61,11 @@ Barbar.opts = {
     filetype = {
         enabled = true,
     },
-    auto_hide = 1,
+    auto_hide = false,
     icons = {
         separator_at_end = false,
-    }
+    },
+    no_name_title = "New Buffer"
 }
 
 return Barbar
