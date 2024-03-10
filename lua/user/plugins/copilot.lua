@@ -9,7 +9,10 @@ Copilot.opts = {
         lua = true
     },
     suggestion = {
-        auto_trigger = true
+        enabled = false
+    },
+    panel = {
+        enbled = false
     }
 }
 

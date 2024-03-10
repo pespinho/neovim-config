@@ -27,6 +27,7 @@ local specs = {
     plugin("barbar"),
     plugin("catppuccin"),
     plugin("comment"),
+    plugin("copilot-cmp"),
     plugin("copilot"),
     plugin("fidget"),
     plugin("gitsigns"),
