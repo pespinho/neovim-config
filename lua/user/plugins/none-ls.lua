@@ -15,8 +15,8 @@ NoneLs.opts = function()
     }
 end
 
-NoneLs.config = function()
-    require("null-ls").setup()
+NoneLs.config = function(_, opts)
+    require("null-ls").setup(opts)
 end
 
 return NoneLs
