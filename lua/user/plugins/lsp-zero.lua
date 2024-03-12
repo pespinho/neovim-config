@@ -133,15 +133,16 @@ local function on_attach(client, bufnr)
 
     require("lsp-zero").buffer_autoformat()
 
-    local function lspSymbol(name, icon)
+    local function lsp_symbol(name, icon)
         local hl = "DiagnosticSign" .. name
         vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
     end
 
-    lspSymbol("Error", "󰅙")
-    lspSymbol("Info", "󰋼")
-    lspSymbol("Hint", "󰌵")
-    lspSymbol("Warn", "")
+    lsp_symbol("Error", "󰅙")
+    lsp_symbol("Warn", "")
+    lsp_symbol("Info", "󰋼")
+    lsp_symbol("Hint", "󰌵")
+    lsp_symbol("Ok", "")
 
     vim.diagnostic.config {
         virtual_text = {
