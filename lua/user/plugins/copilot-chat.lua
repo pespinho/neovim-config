@@ -12,8 +12,8 @@ CopilotChat.dependencies = {
 }
 
 CopilotChat.init = function()
-    vim.keymap.set("n", "<leader>ct", "<cmd>CopilotChatToggle<CR>", { desc = "CopilotChat [t]oggle" })
-    vim.keymap.set("n", "<leader>cr", "<cmd>CopilotChatReset<CR>", { desc = "CopilotChat [r]eset" })
+    vim.keymap.set({ "n", "v" }, "<leader>ct", "<cmd>CopilotChatToggle<CR>", { desc = "CopilotChat [t]oggle" })
+    vim.keymap.set({ "n", "v" }, "<leader>cr", "<cmd>CopilotChatReset<CR>", { desc = "CopilotChat [r]eset" })
     vim.keymap.set({ "n", "v" }, "<leader>ce", "<cmd>CopilotChatExplain<CR>", { desc = "CopilotChat [e]xplain" })
     vim.keymap.set({ "n", "v" }, "<leader>cT", "<cmd>CopilotChatTests<CR>", { desc = "CopilotChat [T]ests" })
     vim.keymap.set({ "n", "v" }, "<leader>cf", "<cmd>CopilotChatFix<CR>", { desc = "CopilotChat [f]ix" })
