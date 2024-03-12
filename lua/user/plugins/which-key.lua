@@ -32,6 +32,7 @@ WhichKey.config = function(_, opts)
     require('which-key').register {
         ['<leader>B'] = { name = '[B]uffer', _ = 'which_key_ignore' },
         ['<leader>f'] = { name = '[F]ind', _ = 'which_key_ignore' },
+        ['<leader>c'] = { name = '[C]opilot', _ = 'which_key_ignore' },
     }
 end
 
