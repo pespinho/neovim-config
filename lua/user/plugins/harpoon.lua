@@ -32,8 +32,14 @@ Harpoon.init = function()
         { desc = "Next harpoon file" })
 end
 
-Harpoon.config = function()
-    require("harpoon").setup()
+Harpoon.opts = {
+    settings = {
+        save_on_toggle = true,
+    },
+}
+
+Harpoon.config = function(_, opts)
+    require("harpoon").setup(opts)
 end
 
 return Harpoon
