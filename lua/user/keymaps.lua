@@ -55,7 +55,7 @@ vim.keymap.set("v", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line up" })
 vim.keymap.set("v", "H", "^", { desc = "Move to first non-blank character" })
-vim.keymap.set("v", "L", "$", { desc = "Move to end of line" })
+vim.keymap.set("v", "L", "g_", { desc = "Move to end of line" })
 
 vim.keymap.set("x", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "Move down", expr = true })
 vim.keymap.set("x", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Move up", expr = true })
