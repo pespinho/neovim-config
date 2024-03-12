@@ -30,9 +30,6 @@ vim.keymap.set("n", "<leader>Eb", "<cmd> enew <CR>", { desc = "New [b]uffer" })
 vim.keymap.set('n', '<leader>En', '<cmd> set nu! <CR>', { desc = "Toggle line [n]umber" })
 vim.keymap.set('n', '<leader>Er', '<cmd> set rnu! <CR>', { desc = "Toggle line [r]elative number" })
 
-vim.keymap.set("n", "<leader>lf",
-    function() vim.lsp.buf.format({ async = true }) end, { desc = "LSP [f]ormatting" })
-
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll half page down and center" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll half page up and center" })
 vim.keymap.set("n", "<n>", "nzzzv", { desc = "Search next and center" })

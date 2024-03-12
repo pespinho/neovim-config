@@ -108,6 +108,9 @@ local function on_attach(client, bufnr)
     vim.keymap.set("n", "<leader>ws", require('telescope.builtin').lsp_dynamic_workspace_symbols,
         { desc = "Workspace symbols", buffer = bufnr })
 
+    vim.keymap.set("n", "<leader>lf",
+        function() vim.lsp.buf.format({ async = true }) end, { desc = "LSP [f]ormatting" })
+
     vim.keymap.set("v", "<leader>ca", function() vim.lsp.buf.code_action() end,
         { desc = "LSP code action", buffer = bufnr })
 
