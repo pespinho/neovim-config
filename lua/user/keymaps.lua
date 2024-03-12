@@ -36,7 +36,7 @@ vim.keymap.set("n", "<n>", "nzzzv", { desc = "Search next and center" })
 vim.keymap.set("n", "<N>", "Nzzzv", { desc = "Search previous and center" })
 
 vim.keymap.set("n", "H", "^", { desc = "Move to first non-blank character" })
-vim.keymap.set("n", "L", "$", { desc = "Move to end of line" })
+vim.keymap.set("n", "L", "g_", { desc = "Move to end of line" })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
