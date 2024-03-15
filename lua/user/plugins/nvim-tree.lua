@@ -34,8 +34,6 @@ local NvimTree = { "nvim-tree/nvim-tree.lua" }
 NvimTree.init = function()
     -- toggle
     vim.keymap.set("n", "<C-n>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle nvimtree" })
-    -- focus
-    vim.keymap.set("n", "<leader>e", "<cmd> NvimTreeFocus <CR>", { desc = "Focus nvimtree" })
 end
 
 NvimTree.opts = {
