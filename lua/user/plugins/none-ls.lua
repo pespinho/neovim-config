@@ -4,6 +4,8 @@
 
 local NoneLs = { "nvimtools/none-ls.nvim" }
 
+NoneLs.dependencies = { 'VonHeikemen/lsp-zero.nvim' }
+
 NoneLs.opts = function()
     local null_ls = require("null-ls")
 
@@ -11,7 +13,8 @@ NoneLs.opts = function()
         sources = {
             null_ls.builtins.diagnostics.markdownlint,
             null_ls.builtins.formatting.markdownlint,
-        }
+        },
+        on_attach = require('user.lsp_on_attach')
     }
 end
 
