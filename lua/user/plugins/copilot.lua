@@ -9,10 +9,19 @@ Copilot.opts = {
         lua = true
     },
     suggestion = {
-        enabled = false
+        auto_trigger = true,
+        enabled = true,
+        keymap = {
+            accept = "<M-y>",
+            accept_word = false,
+            accept_line = false,
+            next = "<M-l>",
+            prev = "<M-h>",
+            dismiss = "<M-e>",
+        },
     },
     panel = {
-        enbled = false
+        enbled = true
     }
 }
 

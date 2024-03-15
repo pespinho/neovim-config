@@ -39,14 +39,8 @@ local function tab_keymap(fallback)
     local cmp = require "cmp"
     local luasnip = require "luasnip"
 
-    if cmp.visible() then
-        cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })
-        -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-        -- that way you will only jump inside the snippet region
-    elseif luasnip.expand_or_jumpable() then
+    if luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
-    elseif has_words_before() then
-        cmp.complete()
     else
         fallback()
     end
@@ -118,11 +112,11 @@ NvimCmp.opts = function()
             ["<C-f>"] = cmp.mapping.scroll_docs(4),
             ["<C-a>"] = cmp.mapping.complete(),
             ["<C-e>"] = cmp.mapping.close(),
+            ["<C-y>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true }),
             ["<Tab>"] = cmp.mapping(tab_keymap, { "i", "s", }),
             ["<S-Tab>"] = cmp.mapping(shift_tab_keymap, { "i", "s", }),
         },
         sources = {
-            { name = "copilot" },
             { name = "nvim_lsp" },
             { name = "luasnip" },
             { name = "buffer" },

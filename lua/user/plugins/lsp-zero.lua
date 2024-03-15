@@ -72,8 +72,8 @@ local function on_attach(client, bufnr)
     vim.keymap.set("n", "<leader>ra", function() renamer() end,
         { desc = "LSP rename", buffer = bufnr })
 
-    vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end,
-        { desc = "LSP code action", buffer = bufnr })
+    vim.keymap.set({ "n", "v" }, "<leader>la", function() vim.lsp.buf.code_action() end,
+        { desc = "LSP code [a]ction", buffer = bufnr })
 
     vim.keymap.set("n", "gr", require('telescope.builtin').lsp_references,
         { desc = "LSP references", buffer = bufnr })
@@ -110,9 +110,6 @@ local function on_attach(client, bufnr)
 
     vim.keymap.set("n", "<leader>lf",
         function() vim.lsp.buf.format({ async = true }) end, { desc = "LSP [f]ormatting" })
-
-    vim.keymap.set("v", "<leader>ca", function() vim.lsp.buf.code_action() end,
-        { desc = "LSP code action", buffer = bufnr })
 
     -- The following two autocommands are used to highlight references of the
     -- word under your cursor when your cursor rests there for a little while.
