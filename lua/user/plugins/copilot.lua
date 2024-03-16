@@ -13,12 +13,12 @@ Copilot.opts = {
         auto_trigger = true,
         enabled = true,
         keymap = {
-            accept = "<M-l>",
+            accept = "<C-S-CR>",
             accept_word = false,
             accept_line = false,
-            next = "<M-l>",
-            prev = "<M-h>",
-            dismiss = "<M-e>",
+            next = "<C-S-n>",
+            prev = "<C-S-p>",
+            dismiss = "<C-S-BS>",
         },
     },
     panel = {

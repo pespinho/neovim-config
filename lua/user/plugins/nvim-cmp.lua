@@ -36,7 +36,6 @@ local has_words_before = function()
 end
 
 local function tab_keymap(fallback)
-    local cmp = require "cmp"
     local luasnip = require "luasnip"
 
     if luasnip.expand_or_jumpable() then
@@ -110,9 +109,9 @@ NvimCmp.opts = function()
             ["<Down>"] = cmp.mapping.select_next_item(),
             ["<C-d>"] = cmp.mapping.scroll_docs(-4),
             ["<C-f>"] = cmp.mapping.scroll_docs(4),
-            ["<C-y>"] = cmp.mapping.complete(),
-            ["<C-e>"] = cmp.mapping.close(),
-            ["<C-a>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true }),
+            ["<C-a>"] = cmp.mapping.complete(),
+            ["<C-BS>"] = cmp.mapping.close(),
+            ["<C-CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true }),
             ["<Tab>"] = cmp.mapping(tab_keymap, { "i", "s", }),
             ["<S-Tab>"] = cmp.mapping(shift_tab_keymap, { "i", "s", }),
         },
