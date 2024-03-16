@@ -18,7 +18,6 @@ end
 
 local function renamer()
     local position = vim.api.nvim_win_get_cursor(0)
-    print(unpack(position))
     local currName = vim.fn.expand "<cword>" .. " "
 
     local win = require("plenary.popup").create(currName, {
@@ -67,6 +66,35 @@ end
 -------------------------------------------------------------------------------
 
 local LspOnAttach = function(client, bufnr)
+    -- The following two autocommands are used to highlight references of the
+    -- word under your cursor when your cursor rests there for a little while.
+    --    See `:help CursorHold` for information about when this is executed
+    --
+    -- When you move your cursor, the highlights will be cleared (the second autocommand).
+    if client and client.server_capabilities.documentHighlightProvider then
+        vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+            buffer = bufnr,
+            callback = vim.lsp.buf.document_highlight,
+        })
+
+        vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+            buffer = bufnr,
+            callback = vim.lsp.buf.clear_references,
+        })
+    end
+
+    if client.server_capabilities.signatureHelpProvider then
+        require('lsp-overloads').setup(client, {
+            keymaps = {
+                next_signature = "<C-j>",
+                previous_signature = "<C-k>",
+                next_parameter = "<C-l>",
+                previous_parameter = "<C-h>",
+                close_signature = "<C-BS>"
+            },
+        })
+    end
+
     if pcall(function() return vim.api.nvim_buf_get_var(bufnr, "lsp_on_attach_called") end) then
         return
     end
@@ -137,23 +165,6 @@ local LspOnAttach = function(client, bufnr)
 
     vim.keymap.set("n", "<leader>lf",
         function() vim.lsp.buf.format({ async = true }) end, { desc = "LSP [f]ormatting" })
-
-    -- The following two autocommands are used to highlight references of the
-    -- word under your cursor when your cursor rests there for a little while.
-    --    See `:help CursorHold` for information about when this is executed
-    --
-    -- When you move your cursor, the highlights will be cleared (the second autocommand).
-    if client and client.server_capabilities.documentHighlightProvider then
-        vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-            buffer = bufnr,
-            callback = vim.lsp.buf.document_highlight,
-        })
-
-        vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-            buffer = bufnr,
-            callback = vim.lsp.buf.clear_references,
-        })
-    end
 
     require("lsp-zero").buffer_autoformat()
 

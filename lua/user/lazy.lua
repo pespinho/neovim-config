@@ -34,6 +34,7 @@ local specs = {
     plugin("harpoon"),
     plugin("indent-blankline"),
     plugin("leap"),
+    plugin("lsp-overloads"),
     plugin("lsp-zero"),
     plugin("lua-snip"),
     plugin("lualine"),
