@@ -62,18 +62,16 @@ local function renamer()
     end, { buffer = 0 })
 end
 
-local lsp_on_attach_called = {}
-
 -------------------------------------------------------------------------------
 -- MODULE
 -------------------------------------------------------------------------------
 
 local LspOnAttach = function(client, bufnr)
-    if lsp_on_attach_called[bufnr] then
+    if pcall(function() return vim.api.nvim_buf_get_var(bufnr, "lsp_on_attach_called") end) then
         return
     end
 
-    lsp_on_attach_called[bufnr] = true
+    vim.api.nvim_buf_set_var(bufnr, "lsp_on_attach_called", true)
 
     vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end,
         { desc = "LSP declaration", buffer = bufnr })
