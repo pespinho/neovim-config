@@ -4,6 +4,7 @@
 
 local autocmds = {
     quit_pre = function()
+        local api = require("nvim-tree.api")
         local tree_wins = {}
         local floating_wins = {}
         local wins = vim.api.nvim_list_wins()
@@ -16,6 +17,15 @@ local autocmds = {
                 table.insert(floating_wins, w)
             end
         end
+
+        local current_win = vim.api.nvim_get_current_win()
+
+        for _, w in ipairs(tree_wins) do
+            if w == current_win then
+                return
+            end
+        end
+
         if 1 == #wins - #floating_wins - #tree_wins then
             -- Should quit, so we close all invalid windows.
             for _, w in ipairs(tree_wins) do
