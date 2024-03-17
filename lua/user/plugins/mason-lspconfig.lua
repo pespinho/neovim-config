@@ -8,6 +8,7 @@ MasonLspconfig.dependencies = {
     'VonHeikemen/lsp-zero.nvim',
     'williamboman/mason.nvim',
     'neovim/nvim-lspconfig',
+    'Issafalcon/lsp-overloads.nvim'
 }
 
 MasonLspconfig.opts = function()
@@ -75,6 +76,9 @@ MasonLspconfig.config = function(_, opts)
                 }
 
                 require('lspconfig').clangd.setup(clangd_opts)
+            end,
+            omnisharp = function()
+                require('lspconfig').omnisharp.setup({})
             end
         },
     })
