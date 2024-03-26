@@ -29,6 +29,7 @@ local specs = {
     plugin("comment"),
     plugin("copilot-chat"),
     plugin("copilot"),
+    plugin("diffview"),
     plugin("fidget"),
     plugin("gitsigns"),
     plugin("harpoon"),
