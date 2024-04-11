@@ -33,6 +33,7 @@ WhichKey.config = function(_, opts)
         ['<leader>B'] = { name = '[B]uffer', _ = 'which_key_ignore' },
         ['<leader>f'] = { name = '[F]ind', _ = 'which_key_ignore' },
         ['<leader>c'] = { name = '[C]opilot', _ = 'which_key_ignore' },
+        ['<leader>q'] = { name = '[Q]uicklist', _ = 'which_key_ignore' },
     }
 end
 

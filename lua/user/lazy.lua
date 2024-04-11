@@ -59,6 +59,7 @@ local specs = {
     plugin("nvterm"),
     plugin("plenary"),
     plugin("promise-async"),
+    plugin("qf_helper"),
     plugin("rainbow_csv"),
     plugin("telescope-fzf-native"),
     plugin("telescope-ui-select"),
