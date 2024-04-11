@@ -16,6 +16,10 @@ require('user.options')
 
 require('user.keymaps')
 
+-- [[ Custom Commands ]]
+
+require('user.custom_commands')
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 
 local Lazy = require("user.lazy")
