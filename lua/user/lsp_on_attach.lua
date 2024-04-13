@@ -90,7 +90,7 @@ local LspOnAttach = function(client, bufnr)
                 previous_signature = "<C-k>",
                 next_parameter = "<C-l>",
                 previous_parameter = "<C-h>",
-                close_signature = "<C-BS>"
+                close_signature = "<C-e>"
             },
         })
     end

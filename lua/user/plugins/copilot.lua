@@ -18,7 +18,7 @@ Copilot.opts = {
             accept_line = false,
             next = "<M-n>",
             prev = "<M-p>",
-            dismiss = "<M-BS>",
+            dismiss = "<M-e>",
         },
     },
     panel = {
