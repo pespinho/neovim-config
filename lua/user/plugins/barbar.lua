@@ -1,4 +1,24 @@
 -------------------------------------------------------------------------------
+-- LOCALS
+-------------------------------------------------------------------------------
+
+--- Close all open buffers.
+--- @return nil
+local function close_all()
+    local barbar = {
+        bbye = require('barbar.bbye'),
+        render = { ui = require('barbar.ui.render') },
+        state = require('barbar.state'),
+    }
+
+    for _, buffer_number in ipairs(barbar.state.buffers) do
+        barbar.bbye.bdelete(false, buffer_number)
+    end
+
+    barbar.render.ui.update()
+end
+
+-------------------------------------------------------------------------------
 -- LAZY - PLUGIN SPEC
 -------------------------------------------------------------------------------
 
@@ -52,6 +72,11 @@ Barbar.init = function()
         { desc = "Order buffer by language", silent = true })
     vim.keymap.set('n', '<leader>Bw', '<Cmd>BufferOrderByWindowNumber<CR>',
         { desc = "Order buffer by window number", silent = true })
+
+    vim.api.nvim_create_user_command('BufferCloseAll', close_all, { desc = 'Close every buffer' })
+    vim.keymap.set('n', '<leader>Ba', '<Cmd>BufferCloseAll<CR>', { desc = "Close [a]ll buffers", silent = true })
+    vim.keymap.set('n', '<leader>Bc', '<Cmd>BufferCloseAllButCurrent<CR>',
+        { desc = "Keep only [c]urrent", silent = true })
 end
 
 Barbar.opts = {
