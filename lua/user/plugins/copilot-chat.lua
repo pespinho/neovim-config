@@ -24,7 +24,10 @@ end
 
 CopilotChat.opts = {
     mappings = {
-        reset = '<C-c>',
+        reset = {
+            normal = '<C-c>',
+            insert = '<C-c>'
+        },
     },
 }
 
