@@ -34,7 +34,7 @@ Telescope.init = function()
     vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Search [d]iagnostics' })
     vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = 'Search [r]esume' })
     vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = 'Search Recent Files ([.] for repeat)' })
-    vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+    vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Find existing [b]uffers' })
 
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set('n', '<leader>fz', function()

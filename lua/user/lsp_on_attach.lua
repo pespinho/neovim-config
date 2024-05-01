@@ -115,56 +115,40 @@ local LspOnAttach = function(client, bufnr)
 
     vim.keymap.set("n", "K", hover, { desc = "LSP hover", buffer = bufnr })
 
-    vim.keymap.set("n", "gi", require('telescope.builtin').lsp_implementations,
-        { desc = "LSP implementation", buffer = bufnr })
+    vim.keymap.set("n", "<leader>li", require('telescope.builtin').lsp_implementations,
+        { desc = "[I]mplementation", buffer = bufnr })
 
     vim.keymap.set("n", "<leader>ls", function() vim.lsp.buf.signature_help() end,
-        { desc = "LSP signature help", buffer = bufnr })
+        { desc = "[S]ignature help", buffer = bufnr })
 
-    vim.keymap.set("n", "<leader>D", require('telescope.builtin').lsp_type_definitions,
-        { desc = "LSP definition type", buffer = bufnr })
+    vim.keymap.set("n", "<leader>lD", require('telescope.builtin').lsp_type_definitions,
+        { desc = "[D]efinition type", buffer = bufnr })
 
-    vim.keymap.set("n", "<leader>ra", function() renamer() end,
-        { desc = "LSP rename", buffer = bufnr })
+    vim.keymap.set("n", "<leader>lr", function() renamer() end,
+        { desc = "[R]ename", buffer = bufnr })
 
     vim.keymap.set({ "n", "v" }, "<leader>la", function() vim.lsp.buf.code_action() end,
-        { desc = "LSP code [a]ction", buffer = bufnr })
+        { desc = "Code [a]ction", buffer = bufnr })
 
     vim.keymap.set("n", "gr", require('telescope.builtin').lsp_references,
-        { desc = "LSP references", buffer = bufnr })
+        { desc = "LSP [r]eferences", buffer = bufnr })
 
     vim.keymap.set("n", "<leader>ld", function() vim.diagnostic.open_float { border = "rounded" } end,
-        { desc = "Floating diagnostic", buffer = bufnr })
+        { desc = "Floating [d]iagnostic", buffer = bufnr })
 
     vim.keymap.set("n", "[d",
         function() vim.diagnostic.goto_prev { float = { border = "rounded" } } end,
-        { desc = "Goto prev", buffer = bufnr })
+        { desc = "Go to prev [d]iagnostic", buffer = bufnr })
 
     vim.keymap.set("n", "]d",
         function() vim.diagnostic.goto_next { float = { border = "rounded" } } end,
-        { desc = "Goto next", buffer = bufnr })
-
-    vim.keymap.set("n", "<leader>q", function() vim.diagnostic.setloclist() end,
-        { desc = "Diagnostic setloclist", buffer = bufnr })
-
-    vim.keymap.set("n", "<leader>wa", function() vim.lsp.buf.add_workspace_folder() end,
-        { desc = "Add workspace folder", buffer = bufnr })
-
-    vim.keymap.set("n", "<leader>wr", function() vim.lsp.buf.remove_workspace_folder() end,
-        { desc = "Remove workspace folder", buffer = bufnr })
-
-    vim.keymap.set("n", "<leader>wl",
-        function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
-        { desc = "List workspace folders", buffer = bufnr })
+        { desc = "Go to next [d]iagnostic", buffer = bufnr })
 
     vim.keymap.set("n", "<leader>lo", require('telescope.builtin').lsp_document_symbols,
-        { desc = "Outline symbols", buffer = bufnr })
-
-    vim.keymap.set("n", "<leader>ws", require('telescope.builtin').lsp_dynamic_workspace_symbols,
-        { desc = "Workspace symbols", buffer = bufnr })
+        { desc = "[O]utline symbols", buffer = bufnr })
 
     vim.keymap.set("n", "<leader>lf",
-        function() vim.lsp.buf.format({ async = true }) end, { desc = "LSP [f]ormatting" })
+        function() vim.lsp.buf.format({ async = true }) end, { desc = "[F]ormat buffer" })
 
     require("lsp-zero").buffer_autoformat()
 

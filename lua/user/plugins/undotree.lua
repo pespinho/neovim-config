@@ -7,7 +7,7 @@ local Undotree = { "mbbill/undotree" }
 Undotree.cmd = "UndotreeToggle"
 
 Undotree.keys = {
-    { "<leader><F5>", ":UndotreeToggle<CR>", desc = "Toggle Undotree" },
+    { "<leader>u", ":UndotreeToggle<CR>", desc = "Toggle [U]ndotree" },
 }
 
 return Undotree

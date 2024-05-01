@@ -20,7 +20,16 @@ local Trouble = { "folke/trouble.nvim" }
 Trouble.dependencies = { "nvim-tree/nvim-web-devicons" }
 
 Trouble.init = function()
-    vim.keymap.set("n", "<leader>tx", "<cmd>TroubleToggle<CR>", { desc = "Trouble toggle" })
+    vim.keymap.set("n", "<leader>tw", "<cmd>TroubleToggle workspace_diagnostics<CR>",
+        { desc = "Toggle [w]orkspace diagnostics" })
+    vim.keymap.set("n", "<leader>tt", "<cmd>TroubleToggle todo<CR>", { desc = "Toggle [t]odo" })
+    vim.keymap.set("n", "<leader>td", "<cmd>TroubleToggle document_diagnostics<CR>",
+        { desc = "Toggle [d]ocument diagnostics" })
+    vim.keymap.set("n", "<leader>tc", function() require("trouble").close() end, { desc = "Toggle [c]lose" })
+    vim.keymap.set("n", "<leader>tn", function() require("trouble").next({ skip_groups = true, jump = true }) end,
+        { desc = "Toggle [n]ext" })
+    vim.keymap.set("n", "<leader>tp", function() require("trouble").previous({ skip_groups = true, jump = true }) end,
+        { desc = "Toggle [p]revious" })
 end
 
 Trouble.opts = {

@@ -26,9 +26,7 @@ vim.keymap.set("n", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc 
 vim.keymap.set("n", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Move down", expr = true })
 vim.keymap.set("n", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "Move down", expr = true })
 
-vim.keymap.set("n", "<leader>Eb", "<cmd> enew <CR>", { desc = "New [b]uffer" })
-vim.keymap.set('n', '<leader>En', '<cmd> set nu! <CR>', { desc = "Toggle line [n]umber" })
-vim.keymap.set('n', '<leader>Er', '<cmd> set rnu! <CR>', { desc = "Toggle line [r]elative number" })
+vim.keymap.set("n", "<leader>bn", "<cmd> enew <CR>", { desc = "New [b]uffer" })
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll half page down and center" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll half page up and center" })
@@ -54,8 +52,8 @@ vim.keymap.set("v", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { de
 vim.keymap.set("v", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "Move down", expr = true })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line up" })
-vim.keymap.set({"v", "o"}, "H", "^", { desc = "Move to first non-blank character" })
-vim.keymap.set({"v", "o"}, "L", "g_", { desc = "Move to end of line" })
+vim.keymap.set({ "v", "o" }, "H", "^", { desc = "Move to first non-blank character" })
+vim.keymap.set({ "v", "o" }, "L", "g_", { desc = "Move to end of line" })
 
 vim.keymap.set("x", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "Move down", expr = true })
 vim.keymap.set("x", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Move up", expr = true })
