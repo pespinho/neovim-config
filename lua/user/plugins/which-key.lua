@@ -38,6 +38,7 @@ WhichKey.config = function(_, opts)
         ['<leader>h'] = { name = '[H]arpoon', _ = 'which_key_ignore' },
         ['<leader>c'] = { name = '[C]opilot', _ = 'which_key_ignore' },
         ['<leader>l'] = { name = '[L]SP', _ = 'which_key_ignore' },
+        ['<leader>n'] = { name = '[N]vimTree', _ = 'which_key_ignore' },
         ['<leader>q'] = { name = '[Q]uickfix', _ = 'which_key_ignore' },
         ['<leader>t'] = { name = '[T]rouble', _ = 'which_key_ignore' },
         ['<leader>T'] = { name = '[T]erminal', _ = 'which_key_ignore' },

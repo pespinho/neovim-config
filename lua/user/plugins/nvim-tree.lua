@@ -4,7 +4,6 @@
 
 local autocmds = {
     quit_pre = function()
-        local api = require("nvim-tree.api")
         local tree_wins = {}
         local floating_wins = {}
         local wins = vim.api.nvim_list_wins()
@@ -42,8 +41,9 @@ local autocmds = {
 local NvimTree = { "nvim-tree/nvim-tree.lua" }
 
 NvimTree.init = function()
-    -- toggle
-    vim.keymap.set("n", "<C-n>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle nvimtree" })
+    vim.keymap.set("n", "<C-n>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle [n]vimtree" })
+    vim.keymap.set("n", "<leader>nt", "<cmd> NvimTreeToggle <CR>", { desc = "[T]oggle" })
+    vim.keymap.set("n", "<leader>nf", "<cmd> NvimTreeFindFile <CR>", { desc = "Find [f]ile" })
 end
 
 NvimTree.opts = {
@@ -57,7 +57,7 @@ NvimTree.opts = {
     hijack_unnamed_buffer_when_opening = false,
     sync_root_with_cwd = true,
     update_focused_file = {
-        enable = true,
+        enable = false,
         update_root = false,
     },
     view = {
