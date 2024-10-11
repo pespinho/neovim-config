@@ -22,7 +22,9 @@ end
 Trouble.opts = {
     win = {
         wo = { colorcolumn = "" }
-    }
+    },
+    warn_no_results = false,
+    open_no_results = true,
 }
 
 Trouble.config = function(_, opts)
