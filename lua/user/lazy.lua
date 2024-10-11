@@ -41,6 +41,7 @@ local specs = {
     plugin("lualine"),
     plugin("mason-lspconfig"),
     plugin("mason"),
+    plugin("mini-icons"),
     plugin("none-ls"),
     plugin("nvim-autopairs"),
     plugin("nvim-cmp"),
@@ -102,7 +103,7 @@ local Lazy = {}
 function Lazy.install()
     local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
-    if not vim.loop.fs_stat(lazypath) then
+    if not vim.uv.fs_stat(lazypath) then
         echo "  Installing lazy.nvim & plugins ..."
         local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
         shell_call({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })

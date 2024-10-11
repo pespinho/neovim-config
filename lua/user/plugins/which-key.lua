@@ -25,24 +25,28 @@ WhichKey.init = function()
     )
 end
 
+WhichKey.opts = {
+    icons = { mappings = false }
+}
+
 WhichKey.config = function(_, opts)
     require("which-key").setup(opts)
 
     -- Document existing key chains
-    require('which-key').register {
-        ['<leader>b'] = { name = '[B]uffer', _ = 'which_key_ignore' },
-        ['<leader>bg'] = { name = '[G]o to', _ = 'which_key_ignore' },
-        ['<leader>bo'] = { name = '[O]rder', _ = 'which_key_ignore' },
-        ['<leader>d'] = { name = '[D]AP', _ = 'which_key_ignore' },
-        ['<leader>f'] = { name = '[F]ind', _ = 'which_key_ignore' },
-        ['<leader>h'] = { name = '[H]arpoon', _ = 'which_key_ignore' },
-        ['<leader>c'] = { name = '[C]opilot', _ = 'which_key_ignore' },
-        ['<leader>l'] = { name = '[L]SP', _ = 'which_key_ignore' },
-        ['<leader>n'] = { name = '[N]vimTree', _ = 'which_key_ignore' },
-        ['<leader>q'] = { name = '[Q]uickfix', _ = 'which_key_ignore' },
-        ['<leader>t'] = { name = '[T]rouble', _ = 'which_key_ignore' },
-        ['<leader>T'] = { name = '[T]erminal', _ = 'which_key_ignore' },
-        ['<leader>w'] = { name = '[W]hich-Key', _ = 'which_key_ignore' },
+    require('which-key').add {
+        { '<leader>b',  group = '[B]uffer' },
+        { '<leader>bg', group = '[G]o to' },
+        { '<leader>bo', group = '[O]rder' },
+        { '<leader>d',  group = '[D]AP' },
+        { '<leader>f',  group = '[F]ind' },
+        { '<leader>h',  group = '[H]arpoon' },
+        { '<leader>c',  group = '[C]opilot' },
+        { '<leader>l',  group = '[L]SP' },
+        { '<leader>n',  group = '[N]vimTree' },
+        { '<leader>q',  group = '[Q]uickfix' },
+        { '<leader>t',  group = '[T]rouble' },
+        { '<leader>T',  group = '[T]erminal' },
+        { '<leader>w',  group = '[W]hich-Key' },
     }
 end
 

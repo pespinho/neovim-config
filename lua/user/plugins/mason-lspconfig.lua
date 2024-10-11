@@ -55,6 +55,7 @@ MasonLspconfig.config = function(_, opts)
             lsp_zero.default_setup,
             lua_ls = function()
                 local lua_opts = lsp_zero.nvim_lua_ls()
+                table.insert(lua_opts.settings.Lua.workspace.library, "${3rd}/luv/library")
 
                 lua_opts.capabilities = opts.capabilities
 
