@@ -1,3 +1,13 @@
+-- Set <space> as the leader key
+-- See `:help mapleader`
+--  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
+-- nvim-tree instruction: disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- IDENTATION SETTINGS (check plugin `tpope/vim-sleuth` later, to see if this is necessary)
 -- Use the appropriate number of spaces to insert a <Tab>.
 vim.opt.expandtab = true
