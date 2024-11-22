@@ -45,6 +45,7 @@
   "promise-async": { "branch": "main", "commit": "119e8961014c9bfaf1487bf3c2a393d254f337e2" },
   "qf_helper.nvim": { "branch": "master", "commit": "fa3c2f3f2706e2c9984409c9c14b5993302ddfa7" },
   "rainbow_csv.nvim": { "branch": "main", "commit": "7f3fddfe813641035fac2cdf94c2ff69bb0bf0b9" },
+  "render-markdown.nvim": { "branch": "main", "commit": "d6a82d70765aa238b7ea48d257a1d57a92501423" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "cf48d4dfce44e0b9a2e19a008d6ec6ea6f01a83b" },
   "telescope-ui-select.nvim": { "branch": "master", "commit": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2" },
   "telescope.nvim": { "branch": "master", "commit": "df534c3042572fb958586facd02841e10186707c" },

@@ -62,6 +62,7 @@ local specs = {
     plugin("promise-async"),
     plugin("qf_helper"),
     plugin("rainbow_csv"),
+    plugin("render-markdown"),
     plugin("telescope-fzf-native"),
     plugin("telescope-ui-select"),
     plugin("telescope"),
