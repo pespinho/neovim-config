@@ -9,7 +9,7 @@ Lualine.dependencies = { 'nvim-tree/nvim-web-devicons' }
 Lualine.opts = {
     extensions = { 'nvim-tree' },
     options = {
-        theme = "catppuccin-mocha"
+        theme = "catppuccin-" .. vim.g.catppuccin
     }
 }
 

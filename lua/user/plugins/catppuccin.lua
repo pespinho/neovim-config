@@ -56,7 +56,7 @@ Catppuccin.name = "catppuccin"
 Catppuccin.priority = 1000
 
 Catppuccin.opts = {
-    flavour = "mocha",
+    flavour = vim.g.catppuccin,
     integrations = {
         indent_blankline = {
             enabled = true,

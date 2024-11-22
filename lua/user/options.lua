@@ -8,6 +8,9 @@ vim.g.maplocalleader = ' '
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- set-catppuccin flavor (latte, frappe, macchiato, mocha)
+vim.g.catppuccin = "mocha"
+
 -- IDENTATION SETTINGS (check plugin `tpope/vim-sleuth` later, to see if this is necessary)
 -- Use the appropriate number of spaces to insert a <Tab>.
 vim.opt.expandtab = true

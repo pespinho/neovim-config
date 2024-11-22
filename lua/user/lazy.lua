@@ -76,7 +76,7 @@ local specs = {
 
 ---The lazy plugin manager options.
 local opts = {
-    install = { colorscheme = { "catppuccin-mocha" } },
+    install = { colorscheme = { "catppuccin-" .. vim.g.catppuccin } },
 
     ui = {
         icons = {
