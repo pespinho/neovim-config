@@ -73,8 +73,7 @@ Catppuccin.opts = {
     custom_highlights = custom_highlights,
 }
 
-Catppuccin.init = function(_, opts)
-    require("catppuccin").setup(opts)
+Catppuccin.init = function()
     vim.cmd.colorscheme("catppuccin")
 end
 
