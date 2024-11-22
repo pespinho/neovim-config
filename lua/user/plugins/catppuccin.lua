@@ -28,7 +28,12 @@ local highlight_factories = {
         return {
             TroubleNormal = { bg = colors.mantle, fg = colors.text },
         }
-    end
+    end,
+    neovim = function(colors)
+        return {
+            MsgArea = { bg = colors.mantle, fg = colors.text },
+        }
+    end,
 }
 
 local function custom_highlights(colors)
