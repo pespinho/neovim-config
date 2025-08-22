@@ -16,7 +16,7 @@ NoneLs.opts = function()
         sources = {
             null_ls.builtins.diagnostics.markdownlint,
             null_ls.builtins.formatting.markdownlint,
-            null_ls.builtins.formatting.csharpier
+            null_ls.builtins.formatting.csharpier,
         },
         on_attach = require('user.lsp_on_attach')
     }

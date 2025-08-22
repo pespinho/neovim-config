@@ -19,3 +19,7 @@ Lazy.install()
 -- [[ Configure and install plugins ]]
 
 Lazy.setup()
+
+-- [[ Configure LSP ]]
+
+require('user.lsp')

@@ -4,7 +4,7 @@
 
 local CopilotChat = { "CopilotC-Nvim/CopilotChat.nvim" }
 
-CopilotChat.branch = "canary"
+CopilotChat.branch = "main"
 
 CopilotChat.dependencies = {
     "zbirenbaum/copilot.lua",
@@ -23,6 +23,7 @@ end
 
 
 CopilotChat.opts = {
+    model = "claude-sonnet-4",
     mappings = {
         reset = {
             normal = '<C-c>',

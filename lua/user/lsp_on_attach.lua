@@ -9,7 +9,8 @@ local function apply(curr, win)
     vim.api.nvim_win_close(win, true)
 
     if #newName > 0 and newName ~= curr then
-        local params = vim.lsp.util.make_position_params()
+        ---@type table
+        local params = vim.lsp.util.make_position_params(0, 'utf-8')
         params.newName = newName
 
         vim.lsp.buf_request(0, "textDocument/rename", params)
@@ -137,11 +138,11 @@ local LspOnAttach = function(client, bufnr)
         { desc = "Floating [d]iagnostic", buffer = bufnr })
 
     vim.keymap.set("n", "[d",
-        function() vim.diagnostic.goto_prev { float = { border = "rounded" } } end,
+        function() vim.diagnostic.jump { count = -1, float = { border = "rounded" } } end,
         { desc = "Go to prev [d]iagnostic", buffer = bufnr })
 
     vim.keymap.set("n", "]d",
-        function() vim.diagnostic.goto_next { float = { border = "rounded" } } end,
+        function() vim.diagnostic.jump { count = 1, float = { border = "rounded" } } end,
         { desc = "Go to next [d]iagnostic", buffer = bufnr })
 
     vim.keymap.set("n", "<leader>lo", require('telescope.builtin').lsp_document_symbols,
