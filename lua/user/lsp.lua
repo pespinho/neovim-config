@@ -41,7 +41,7 @@ local function get_lua_options()
                 format = {
                     enable = true,
                     defaultConfig = {
-                        ident_size = 4
+                        indent_size = 4
                     }
                 }
             }

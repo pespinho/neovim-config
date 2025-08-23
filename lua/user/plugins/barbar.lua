@@ -51,7 +51,7 @@ Barbar.init = function()
     vim.keymap.set('n', '<leader>bgf', '<Cmd>BufferFirst<CR>', { desc = "[F]irst buffer", silent = true })
     vim.keymap.set('n', '<leader>bgl', '<Cmd>BufferLast<CR>', { desc = "[L]ast buffer", silent = true })
     -- Pin/unpin buffer
-    vim.keymap.set('n', '<leader>bp', '<Cmd>BufferPin<CR>', { desc = "Pin buffer", silent = true })
+    vim.keymap.set('n', '<leader>bP', '<Cmd>BufferPin<CR>', { desc = "[P]in buffer", silent = true })
     -- Close buffer
     vim.keymap.set('n', '<leader>x', '<Cmd>BufferClose<CR>', { desc = "Close buffer (click the [x])", silent = true })
     -- Wipeout buffer
@@ -63,7 +63,7 @@ Barbar.init = function()
     --                 :BufferCloseBuffersLeft
     --                 :BufferCloseBuffersRight
     -- Magic buffer-picking mode
-    vim.keymap.set('n', '<leader>bp', '<Cmd>BufferPick<CR>', { desc = "[P]ick buffer", silent = true })
+    vim.keymap.set('n', '<leader>bp', '<Cmd>BufferPick<CR>', { desc = "[p]ick buffer", silent = true })
     -- Sort automatically by...
     vim.keymap.set('n', '<leader>bon', '<Cmd>BufferOrderByBufferNumber<CR>',
         { desc = "Order buffer by number", silent = true })

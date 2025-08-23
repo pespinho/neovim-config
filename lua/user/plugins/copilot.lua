@@ -22,7 +22,7 @@ Copilot.opts = {
         },
     },
     panel = {
-        enbled = true
+        enabled = true
     }
 }
 

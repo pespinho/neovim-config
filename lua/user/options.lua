@@ -102,7 +102,7 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
 
--- Don't show which line your cursor is on
+-- Show which line your cursor is on
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
@@ -110,10 +110,6 @@ vim.opt.scrolloff = 8
 
 -- Color the nth column of the editor.
 vim.opt.colorcolumn = { "80", "120" }
-
--- Show relative numbers as default.
-vim.opt.relativenumber = true
-vim.opt.number = true
 
 -- Don't wrap text by default.
 vim.opt.wrap = false

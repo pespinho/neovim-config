@@ -125,7 +125,7 @@ Telescope.config = function(_, opts)
     telescope.setup(opts)
 
     -- load extensions
-    for _, ext in ipairs(opts.extensions_list) do
+    for ext, _ in pairs(opts.extensions_list) do
         telescope.load_extension(ext)
     end
 
