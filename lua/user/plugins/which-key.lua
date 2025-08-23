@@ -41,6 +41,7 @@ WhichKey.config = function(_, opts)
         { '<leader>f',  group = '[F]ind' },
         { '<leader>h',  group = '[H]arpoon' },
         { '<leader>c',  group = '[C]opilot' },
+        { '<leader>cs', group = '[S]ticky' }, -- Copilot sticky prompts
         { '<leader>l',  group = '[L]SP' },
         { '<leader>n',  group = '[N]vimTree' },
         { '<leader>q',  group = '[Q]uickfix' },
