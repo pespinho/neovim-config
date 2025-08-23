@@ -6,7 +6,6 @@ local NoneLs = { "nvimtools/none-ls.nvim" }
 
 NoneLs.dependencies = {
     'VonHeikemen/lsp-zero.nvim',
-    'Issafalcon/lsp-overloads.nvim'
 }
 
 NoneLs.opts = function()

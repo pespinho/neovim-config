@@ -7,7 +7,6 @@ local MasonLspconfig = { 'williamboman/mason-lspconfig.nvim' }
 MasonLspconfig.dependencies = {
     'williamboman/mason.nvim',
     'neovim/nvim-lspconfig',
-    'Issafalcon/lsp-overloads.nvim'
 }
 
 MasonLspconfig.opts = function()
