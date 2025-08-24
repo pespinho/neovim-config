@@ -38,6 +38,7 @@ local specs = {
     plugin("mason-lspconfig"),
     plugin("mason"),
     plugin("mini-icons"),
+    plugin("noice"),
     plugin("none-ls"),
     plugin("nvim-autopairs"),
     plugin("nvim-cmp"),
