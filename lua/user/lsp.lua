@@ -61,6 +61,13 @@ end
 -- LSP CONFIGURATION
 -------------------------------------------------------------------------------
 
+-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+vim.lsp.config('*', {
+    capabilities = capabilities,
+})
+
 vim.lsp.config('lua_ls', get_lua_options())
 
 vim.lsp.config('clangd', {

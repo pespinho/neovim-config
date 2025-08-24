@@ -2,18 +2,58 @@
 -- LOCALS
 -------------------------------------------------------------------------------
 
+local kind_icons = {
+    Text = "",
+    Method = "󰆧",
+    Function = "󰊕",
+    Constructor = "",
+    Field = "󰇽",
+    Variable = "󰂡",
+    Class = "󰠱",
+    Interface = "",
+    Module = "",
+    Property = "󰜢",
+    Unit = "",
+    Value = "󰎠",
+    Enum = "",
+    Keyword = "󰌋",
+    Snippet = "",
+    Color = "󰏘",
+    File = "󰈙",
+    Reference = "",
+    Folder = "󰉋",
+    EnumMember = "",
+    Constant = "󰏿",
+    Struct = "",
+    Event = "",
+    Operator = "󰆕",
+    TypeParameter = "󰅲",
+}
+
 local formatting_style = {
     -- default fields order i.e completion word + item.kind + item.kind icons
     fields = { "abbr", "kind", "menu" },
 
-    format = function(_, item)
-        local icon = ""
+    format = function(entry, vim_item)
+        local lspkind_ok, lspkind = pcall(require, "lspkind")
+        if not lspkind_ok then
+            -- From kind_icons array
+            vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatenates the icons with the name of the item kind
+            -- Source
+            vim_item.menu = ({
+                buffer = "[Buffer]",
+                nvim_lsp = "[LSP]",
+                luasnip = "[LuaSnip]",
+                nvim_lua = "[Lua]",
+                latex_symbols = "[LaTeX]",
+            })[entry.source.name]
+            return vim_item
+        else
+            -- From lspkind
+            return lspkind.cmp_format()(entry, vim_item)
+        end
+    end
 
-        icon = (" " .. icon .. " ") or icon
-        item.kind = string.format("%s %s", icon, item.kind or "")
-
-        return item
-    end,
 }
 
 local function border(hl_name)
@@ -27,12 +67,6 @@ local function border(hl_name)
         { "╰", hl_name },
         { "│", hl_name },
     }
-end
-
-local has_words_before = function()
-    unpack = unpack or table.unpack
-    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
 local function tab_keymap(fallback)
@@ -66,13 +100,17 @@ NvimCmp.event = "InsertEnter"
 
 NvimCmp.dependencies = {
     "L3MON4D3/LuaSnip",
+    "saadparwaiz1/cmp_luasnip",
     "windwp/nvim-autopairs",
     -- cmp sources plugins
-    "saadparwaiz1/cmp_luasnip",
     "hrsh7th/cmp-nvim-lua",
     "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-nvim-lsp-signature-help",
+    "hrsh7th/cmp-nvim-lsp-document-symbol",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
+    "hrsh7th/cmp-cmdline",
+    "onsails/lspkind.nvim",
 }
 
 NvimCmp.opts = function()
@@ -117,16 +155,39 @@ NvimCmp.opts = function()
         },
         sources = {
             { name = "nvim_lsp" },
+            { name = 'nvim_lsp_signature_help' },
             { name = "luasnip" },
             { name = "buffer" },
             { name = "nvim_lua" },
             { name = "path" },
+            { name = "cmdline" },
         },
     }
 end
 
 NvimCmp.config = function(_, opts)
-    require "cmp".setup(opts)
+    local cmp = require("cmp")
+
+    cmp.setup(opts)
+
+    cmp.setup.cmdline('/', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+            { name = 'nvim_lsp_document_symbol' }
+        }, {
+            { name = 'buffer' }
+        })
+    })
+
+    cmp.setup.cmdline(':', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+            { name = 'path' }
+        }, {
+            { name = 'cmdline' }
+        }),
+        matching = { disallow_symbol_nonprefix_matching = false }
+    })
 end
 
 return NvimCmp
