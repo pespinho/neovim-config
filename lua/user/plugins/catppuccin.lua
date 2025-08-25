@@ -32,6 +32,7 @@ local highlight_factories = {
     neovim = function(colors)
         return {
             MsgArea = { bg = colors.mantle, fg = colors.text },
+            CmpItemMenu = { fg = colors.overlay0, italic = true }
         }
     end,
 }
@@ -67,6 +68,7 @@ Catppuccin.opts = {
             enabled = true,
             colored_indent_levels = false,
         },
+        noice = true,
         barbar = true,
         harpoon = true,
         leap = true,
