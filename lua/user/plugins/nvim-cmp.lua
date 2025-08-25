@@ -2,58 +2,18 @@
 -- LOCALS
 -------------------------------------------------------------------------------
 
-local kind_icons = {
-    Text = "",
-    Method = "󰆧",
-    Function = "󰊕",
-    Constructor = "",
-    Field = "󰇽",
-    Variable = "󰂡",
-    Class = "󰠱",
-    Interface = "",
-    Module = "",
-    Property = "󰜢",
-    Unit = "",
-    Value = "󰎠",
-    Enum = "",
-    Keyword = "󰌋",
-    Snippet = "",
-    Color = "󰏘",
-    File = "󰈙",
-    Reference = "",
-    Folder = "󰉋",
-    EnumMember = "",
-    Constant = "󰏿",
-    Struct = "",
-    Event = "",
-    Operator = "󰆕",
-    TypeParameter = "󰅲",
-}
-
 local formatting_style = {
     -- default fields order i.e completion word + item.kind + item.kind icons
-    fields = { "abbr", "kind", "menu" },
+    fields = { "kind", "abbr", "menu" },
 
     format = function(entry, vim_item)
-        local lspkind_ok, lspkind = pcall(require, "lspkind")
-        if not lspkind_ok then
-            -- From kind_icons array
-            vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatenates the icons with the name of the item kind
-            -- Source
-            vim_item.menu = ({
-                buffer = "[Buffer]",
-                nvim_lsp = "[LSP]",
-                luasnip = "[LuaSnip]",
-                nvim_lua = "[Lua]",
-                latex_symbols = "[LaTeX]",
-            })[entry.source.name]
-            return vim_item
-        else
-            -- From lspkind
-            return lspkind.cmp_format()(entry, vim_item)
-        end
+        local lspkind = require("lspkind")
+        local item = lspkind.cmp_format()(entry, vim_item)
+        local strings = vim.split(item.kind, "%s", { trimempty = true })
+        item.kind = " " .. (strings[1] or "") .. " "
+        item.menu = "    (" .. (strings[2] or "") .. ")"
+        return item
     end
-
 }
 
 local function border(hl_name)
@@ -145,7 +105,7 @@ NvimCmp.opts = function()
             ["<C-n>"] = cmp.mapping.select_next_item(),
             ["<Up>"] = cmp.mapping.select_prev_item(),
             ["<Down>"] = cmp.mapping.select_next_item(),
-            ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+            ["<C-b>"] = cmp.mapping.scroll_docs(-4),
             ["<C-f>"] = cmp.mapping.scroll_docs(4),
             ["<C-y>"] = cmp.mapping.complete(),
             ["<C-e>"] = cmp.mapping.close(),
@@ -154,13 +114,13 @@ NvimCmp.opts = function()
             ["<S-Tab>"] = cmp.mapping(shift_tab_keymap, { "i", "s", }),
         },
         sources = {
-            { name = "nvim_lsp" },
-            { name = 'nvim_lsp_signature_help' },
-            { name = "luasnip" },
-            { name = "buffer" },
-            { name = "nvim_lua" },
-            { name = "path" },
-            { name = "cmdline" },
+            { name = "nvim_lsp",                priority = 1000 },
+            { name = 'nvim_lsp_signature_help', priority = 900 },
+            { name = "luasnip",                 priority = 800 },
+            { name = "buffer",                  priority = 700 },
+            { name = "nvim_lua",                priority = 600 },
+            { name = "path",                    priority = 500 },
+            { name = "cmdline",                 priority = 400 },
         },
     }
 end
