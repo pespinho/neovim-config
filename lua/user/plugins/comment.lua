@@ -18,7 +18,7 @@ Comment.init = function()
     vim.keymap.set(
         "v",
         "<leader>/",
-        function() require('Comment.api').toggle.linewise(vim.fn.visualmode()) end,
+        "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
         { desc = "Toggle comment ([/] as in C line comments)" })
 end
 
