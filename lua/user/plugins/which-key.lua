@@ -6,17 +6,25 @@ local WhichKey = { "folke/which-key.nvim" }
 
 WhichKey.event = 'VeryLazy'
 
-WhichKey.keys = {
-    {
+WhichKey.init = function()
+    require('which-key').add({
         "<leader>?",
         function()
-            require("which-key").show({ global = false })
-        end,
+            require("which-key").show()
+        end
+        ,
         desc = "Which-Key[?]",
-    }
-}
+        icon = ''
+    })
+end
 
 WhichKey.opts = {
+    preset = "helix",
+    icons = { rules = false },
+    keys = {
+        scroll_down = "<c-d>", -- binding to scroll down inside the popup
+        scroll_up = "<c-u>",   -- binding to scroll up inside the popup
+    }
 }
 
 WhichKey.config = function(_, opts)
@@ -28,7 +36,6 @@ WhichKey.config = function(_, opts)
         { '<leader>bg', group = '[G]o to', icon = '' },
         { '<leader>bo', group = '[O]rder', icon = '' },
         { '<leader>d', group = '[D]AP', icon = '' },
-        { '<leader>g', group = '[G]it', icon = '' },
         { '<leader>f', group = '[F]ind', icon = '' },
         { '<leader>c', group = '[C]opilot', icon = '' },
         { '<leader>cs', group = '[S]ticky', icon = '' }, -- Copilot sticky prompts
