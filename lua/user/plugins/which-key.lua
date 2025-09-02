@@ -6,27 +6,17 @@ local WhichKey = { "folke/which-key.nvim" }
 
 WhichKey.event = 'VeryLazy'
 
-WhichKey.init = function()
-    vim.keymap.set(
-        "n",
-        "<leader>wk",
-        function() vim.cmd("WhichKey") end,
-        { desc = "All [k]eymaps" }
-    )
-
-    vim.keymap.set(
-        "n",
-        "<leader>wq",
+WhichKey.keys = {
+    {
+        "<leader>?",
         function()
-            local input = vim.fn.input("WhichKey: ")
-            vim.cmd("WhichKey " .. input)
+            require("which-key").show({ global = false })
         end,
-        { desc = "[Q]uery lookup" }
-    )
-end
+        desc = "Which-Key[?]",
+    }
+}
 
 WhichKey.opts = {
-    icons = { mappings = false }
 }
 
 WhichKey.config = function(_, opts)
@@ -34,20 +24,19 @@ WhichKey.config = function(_, opts)
 
     -- Document existing key chains
     require('which-key').add {
-        { '<leader>b',  group = '[B]uffer' },
-        { '<leader>bg', group = '[G]o to' },
-        { '<leader>bo', group = '[O]rder' },
-        { '<leader>d',  group = '[D]AP' },
-        { '<leader>f',  group = '[F]ind' },
-        { '<leader>h',  group = '[H]arpoon' },
-        { '<leader>c',  group = '[C]opilot' },
-        { '<leader>cs', group = '[S]ticky' }, -- Copilot sticky prompts
-        { '<leader>l',  group = '[L]SP' },
-        { '<leader>n',  group = '[N]vimTree' },
-        { '<leader>q',  group = '[Q]uickfix' },
-        { '<leader>t',  group = '[T]rouble' },
-        { '<leader>T',  group = '[T]erminal' },
-        { '<leader>w',  group = '[W]hich-Key' },
+        { '<leader>b', group = '[B]uffer', icon = '' },
+        { '<leader>bg', group = '[G]o to', icon = '' },
+        { '<leader>bo', group = '[O]rder', icon = '' },
+        { '<leader>d', group = '[D]AP', icon = '' },
+        { '<leader>g', group = '[G]it', icon = '' },
+        { '<leader>f', group = '[F]ind', icon = '' },
+        { '<leader>c', group = '[C]opilot', icon = '' },
+        { '<leader>cs', group = '[S]ticky', icon = '' }, -- Copilot sticky prompts
+        { '<leader>l', group = '[L]SP', icon = '󱡄' },
+        { '<leader>n', group = '[N]vimTree', icon = '' },
+        { '<leader>q', group = '[Q]uickfix', icon = '' },
+        { '<leader>t', group = '[T]rouble', icon = '' },
+        { '<leader>T', group = '[T]erminal', icon = '' },
     }
 end
 

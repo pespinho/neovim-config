@@ -113,15 +113,15 @@ NvimCmp.opts = function()
             ["<Tab>"] = cmp.mapping(tab_keymap, { "i", "s", }),
             ["<S-Tab>"] = cmp.mapping(shift_tab_keymap, { "i", "s", }),
         },
-        sources = {
-            { name = "nvim_lsp",                priority = 1000 },
-            { name = 'nvim_lsp_signature_help', priority = 900 },
-            { name = "luasnip",                 priority = 800 },
-            { name = "buffer",                  priority = 700 },
-            { name = "nvim_lua",                priority = 600 },
-            { name = "path",                    priority = 500 },
-            { name = "cmdline",                 priority = 400 },
-        },
+        sources = cmp.config.sources(
+            { { name = 'nvim_lsp_signature_help' },
+                { name = "luasnip" },
+                { name = "nvim_lsp" },
+                { name = "nvim_lua" } },
+            { { name = "buffer" },
+                { name = "path" } },
+            { { name = "cmdline" } }
+        ),
     }
 end
 

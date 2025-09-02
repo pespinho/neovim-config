@@ -17,6 +17,9 @@ Noice.opts = {
             ["vim.lsp.util.stylize_markdown"] = true,
             ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
         },
+        message = {
+            view = "cmdline"
+        },
     },
     -- you can enable a preset for easier configuration
     presets = {
@@ -26,7 +29,7 @@ Noice.opts = {
     },
     cmdline = {
         view = "cmdline"
-    }
+    },
 }
 
 Noice.config = function(_, opts)
