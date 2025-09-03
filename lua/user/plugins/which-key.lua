@@ -22,8 +22,8 @@ WhichKey.opts = {
     preset = "helix",
     icons = { rules = false },
     keys = {
-        scroll_down = "<c-d>", -- binding to scroll down inside the popup
-        scroll_up = "<c-u>",   -- binding to scroll up inside the popup
+        scroll_down = "<c-f>", -- binding to scroll down inside the popup
+        scroll_up = "<c-b>",   -- binding to scroll up inside the popup
     }
 }
 
