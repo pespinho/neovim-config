@@ -19,8 +19,10 @@ WhichKey.init = function()
 end
 
 WhichKey.opts = {
-    preset = "helix",
-    icons = { rules = false },
+    icons = {
+        mappings = false, -- disable icons for now, until I get it right
+        rules = false
+    },
     keys = {
         scroll_down = "<c-f>", -- binding to scroll down inside the popup
         scroll_up = "<c-b>",   -- binding to scroll up inside the popup
