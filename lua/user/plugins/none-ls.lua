@@ -13,6 +13,7 @@ NoneLs.opts = function()
 
     return {
         sources = {
+            null_ls.builtins.diagnostics.ansiblelint,
             null_ls.builtins.formatting.csharpier,
             null_ls.builtins.diagnostics.markdownlint,
             null_ls.builtins.formatting.markdownlint,

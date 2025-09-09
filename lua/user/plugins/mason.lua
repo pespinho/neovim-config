@@ -8,7 +8,18 @@ Mason.cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" }
 
 Mason.opts = function()
     return {
-        ensure_installed = { "lua-language-server", "clangd" }, -- not an option from mason.nvim
+        ensure_installed = { 
+            "ansible-lint", 
+            "ansible-language-server", 
+            "clangd", 
+            "basedpyright",
+            "gopls",
+            "json-lsp",
+            "lua-language-server", 
+            "markdownlint",
+            "ruff",
+            "vacuum"
+        }, -- not an option from mason.nvim
 
         PATH = "skip",
 
