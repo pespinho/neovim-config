@@ -30,7 +30,7 @@ vim.opt.fillchars = { eob = " " }
 -- Make line numbers default.
 vim.opt.number = true
 -- Show relative line numbers.
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 -- Minimal number of columns to use for the line number.
 vim.opt.numberwidth = 2
 
