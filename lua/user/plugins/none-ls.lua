@@ -4,10 +4,6 @@
 
 local NoneLs = { "nvimtools/none-ls.nvim" }
 
-NoneLs.dependencies = {
-    'VonHeikemen/lsp-zero.nvim',
-}
-
 NoneLs.opts = function()
     local null_ls = require("null-ls")
 

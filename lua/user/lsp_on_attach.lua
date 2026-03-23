@@ -139,8 +139,6 @@ local LspOnAttach = function(client, bufnr)
     vim.keymap.set("n", "<leader>lf",
         function() vim.lsp.buf.format({ async = true }) end, { desc = "[F]ormat buffer" })
 
-    require("lsp-zero").buffer_autoformat()
-
     local hl = "DiagnosticSignOk"
     vim.fn.sign_define(hl, { text = "", numhl = hl, texthl = hl })
 

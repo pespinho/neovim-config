@@ -32,7 +32,6 @@ local specs = {
     plugin("fidget"),
     plugin("gitsigns"),
     plugin("indent-blankline"),
-    plugin("lsp-zero"),
     plugin("lua-snip"),
     plugin("lualine"),
     plugin("mason-lspconfig"),

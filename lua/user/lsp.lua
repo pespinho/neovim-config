@@ -100,3 +100,18 @@ vim.lsp.config('basedpyright', {
 })
 
 vim.lsp.inlay_hint.enable()
+
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(args)
+        require('user.lsp_on_attach')(
+            vim.lsp.get_client_by_id(args.data.client_id),
+            args.buf
+        )
+    end,
+})
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+    callback = function()
+        vim.lsp.buf.format({ async = false })
+    end,
+})
