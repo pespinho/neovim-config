@@ -47,11 +47,13 @@ NvimDap.keys = {
 
 NvimDap.config = function()
     local dap = require('dap')
+
     dap.adapters.lldb = {
         type = 'executable',
         command = '/opt/homebrew/opt/llvm/bin/lldb-vscode', -- adjust as needed, must be absolute path
         name = 'lldb'
     }
+
     dap.adapters["local-lua"] = {
         type = "executable",
         command = "node",
@@ -70,6 +72,12 @@ NvimDap.config = function()
                 on_config(config)
             end
         end,
+    }
+
+    dap.adapters.python = {
+        type = 'executable',
+        command = 'python',
+        args = { '-m', 'debugpy.adapter' },
     }
 
     dap.configurations.cpp = {
