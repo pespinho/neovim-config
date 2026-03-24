@@ -48,7 +48,7 @@ end
 
 
 CopilotChat.opts = {
-    model = "claude-sonnet-4",
+    model = "claude-sonnet-4.6",
     mappings = {
         reset = {
             normal = '<C-c>',
