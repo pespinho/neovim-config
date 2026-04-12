@@ -3,14 +3,6 @@
 -------------------------------------------------------------------------------
 
 local function get_lua_options()
-    -- Determine the Neovim config directory once
-    local neovim_config_dir = vim.fn.stdpath('config')
-
-    -- Check if the current working directory (where Neovim was launched,
-    -- or the root of the project you opened) is the Neovim config directory.
-    -- vim.fn.getcwd() gets the current working directory of Neovim.
-    -- This is a good proxy for the project root when launching Neovim.
-    local is_neovim_config_root = vim.fn.getcwd() == neovim_config_dir
     local runtime_path = vim.split(package.path, ';')
     table.insert(runtime_path, 'lua/?.lua')
     table.insert(runtime_path, 'lua/?/init.lua')
@@ -20,23 +12,8 @@ local function get_lua_options()
             Lua = {
                 -- Disable telemetry
                 telemetry = { enable = false },
-                runtime = {
-                    -- Tell the language server which version of Lua you're using
-                    -- (most likely LuaJIT in the case of Neovim)
-                    version = 'LuaJIT',
-                    path = runtime_path,
-                },
-                diagnostics = {
-                    -- Get the language server to recognize the `vim` global
-                    globals = { 'vim' }
-                },
                 workspace = {
                     checkThirdParty = false,
-                    library = {
-                        -- Make the server aware of Neovim runtime files
-                        vim.env.VIMRUNTIME,
-                        '${3rd}/luv/library'
-                    }
                 },
                 format = {
                     enable = true,
@@ -48,10 +25,30 @@ local function get_lua_options()
         }
     }
 
-    if not is_neovim_config_root then
-        config.settings.Lua.runtime = nil
-        config.settings.Lua.workspace.library = nil
-        config.settings.Lua.diagnostics.globals = nil
+    -- Determine the Neovim config directory once
+    local neovim_config_dir = vim.loop.fs_realpath(vim.fn.stdpath('config'))
+    local cwd = vim.loop.fs_realpath(vim.fn.getcwd())
+
+    -- Check if the current working directory (where Neovim was launched,
+    -- or the root of the project you opened) is the Neovim config directory.
+    local is_neovim_config_root = cwd == neovim_config_dir
+
+    if is_neovim_config_root then
+        config.settings.Lua.runtime = {
+            -- Tell the language server which version of Lua you're using
+            -- (most likely LuaJIT in the case of Neovim)
+            version = 'LuaJIT',
+            path = runtime_path,
+        }
+        config.settings.Lua.workspace.library = {
+            -- Make the server aware of Neovim runtime files
+            vim.env.VIMRUNTIME,
+            '${3rd}/luv/library'
+        }
+        config.settings.Lua.diagnostics = {
+            -- Get the language server to recognize the `vim` global
+            globals = { 'vim' },
+        }
     end
 
     return vim.tbl_deep_extend('force', config, {})
