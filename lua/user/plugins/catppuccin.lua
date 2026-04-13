@@ -57,6 +57,8 @@ end
 
 local Catppuccin = { "catppuccin/nvim" }
 
+Catppuccin.tag = 'v1.11.0'
+
 Catppuccin.name = "catppuccin"
 
 Catppuccin.priority = 1000
