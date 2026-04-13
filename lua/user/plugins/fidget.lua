@@ -4,6 +4,6 @@
 
 local Fidget = { "j-hui/fidget.nvim" }
 
-Fidget.opts = {}
+Fidget.tag = "v1.6.1"
 
 return Fidget
