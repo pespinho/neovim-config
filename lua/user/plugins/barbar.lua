@@ -24,6 +24,8 @@ end
 
 local Barbar = { 'romgrk/barbar.nvim' }
 
+Barbar.tag = 'v1.9.1'
+
 Barbar.dependencies = {
     'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
     'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
@@ -33,8 +35,8 @@ Barbar.init = function()
     vim.g.barbar_auto_setup = false
 
     -- Move to previous/next
-    vim.keymap.set('n', '<S-Tab>', '<Cmd>BufferPrevious<CR>', { desc = "Previous buffer", silent = true })
-    vim.keymap.set('n', '<Tab>', '<Cmd>BufferNext<CR>', { desc = "Next buffer", silent = true })
+    vim.keymap.set('n', '<A-,>', '<Cmd>BufferPrevious<CR>', { desc = "Previous buffer", silent = true })
+    vim.keymap.set('n', '<A-.>', '<Cmd>BufferNext<CR>', { desc = "Next buffer", silent = true })
     -- Re-order to previous/next
     vim.keymap.set('n', '<leader>b<', '<Cmd>BufferMovePrevious<CR>', { desc = "Swap buffer left", silent = true })
     vim.keymap.set('n', '<leader>b>', '<Cmd>BufferMoveNext<CR>', { desc = "Swap buffer right", silent = true })
