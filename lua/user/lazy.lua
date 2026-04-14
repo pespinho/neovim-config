@@ -64,7 +64,6 @@ local specs = {
     plugin("todo-comments"),
     plugin("trouble"),
     plugin("undotree"),
-    plugin("vim-fugitive"),
     plugin("vim-tmux-navigator"),
     plugin("which-key"),
 }
