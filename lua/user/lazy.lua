@@ -25,13 +25,13 @@ end
 ---The list of plugins to install and configure.
 local specs = {
     plugin("barbar"),
+    plugin("blink-cmp"),
     plugin("catppuccin"),
     plugin("copilot-chat"),
     plugin("copilot"),
     plugin("fidget"),
     plugin("gitsigns"),
     plugin("indent-blankline"),
-    plugin("lua-snip"),
     plugin("lualine"),
     plugin("mason-lspconfig"),
     plugin("mason"),
@@ -39,7 +39,6 @@ local specs = {
     plugin("noice"),
     plugin("none-ls"),
     plugin("nvim-autopairs"),
-    plugin("nvim-cmp"),
     plugin("nvim-dap-ui"),
     plugin("nvim-dap"),
     plugin("nvim-foldsign"),
