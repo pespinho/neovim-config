@@ -4,6 +4,8 @@
 
 local IndentBlankline = { "lukas-reineke/indent-blankline.nvim" }
 
+IndentBlankline.tag = "v3.9.1"
+
 IndentBlankline.opts = {
     scope = {
         show_start = false,
