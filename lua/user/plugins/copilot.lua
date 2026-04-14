@@ -4,26 +4,25 @@
 
 local Copilot = { "zbirenbaum/copilot.lua" }
 
+Copilot.tag = "v2.0.2"
+
+Copilot.cmd = "Copilot"
+Copilot.event = "InsertEnter"
+
 Copilot.opts = {
     filetypes = {
-        lua = true,
-        markdown = true
+        ["*"] = false,
     },
     suggestion = {
+        enabled = false,
         auto_trigger = true,
-        enabled = true,
         keymap = {
-            accept = "<M-a>",
-            accept_word = false,
-            accept_line = false,
+            accept = "<M-y>",
             next = "<M-n>",
             prev = "<M-p>",
             dismiss = "<M-e>",
         },
     },
-    panel = {
-        enabled = true
-    }
 }
 
 Copilot.config = function(_, opts)
