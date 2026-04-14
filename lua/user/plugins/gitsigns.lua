@@ -4,6 +4,8 @@
 
 local Gitsigns = { "lewis6991/gitsigns.nvim" }
 
+Gitsigns.tag = "v2.1.0"
+
 -- git stuff
 Gitsigns.opts = {
     signs = {
