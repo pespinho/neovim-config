@@ -92,6 +92,15 @@ Barbar.opts = {
     auto_hide = false,
     icons = {
         separator_at_end = false,
+        diagnostics = {
+            [vim.diagnostic.severity.ERROR] = { enabled = true },
+            [vim.diagnostic.severity.WARN] = { enabled = true },
+        },
+        gitsigns = {
+            added = { enabled = true, icon = '+' },
+            changed = { enabled = true, icon = '~' },
+            deleted = { enabled = true, icon = '-' },
+        },
     },
     no_name_title = "New Buffer"
 }
