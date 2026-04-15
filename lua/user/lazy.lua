@@ -30,6 +30,7 @@ local specs = {
     plugin("copilot-chat"),
     plugin("copilot"),
     plugin("fidget"),
+    plugin("friendly-snippets"),
     plugin("gitsigns"),
     plugin("indent-blankline"),
     plugin("lualine"),
