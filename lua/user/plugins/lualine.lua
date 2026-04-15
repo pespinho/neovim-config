@@ -2,16 +2,16 @@
 -- LAZY - PLUGIN SPEC
 -------------------------------------------------------------------------------
 
-local Lualine = { 'nvim-lualine/lualine.nvim' }
+local Lualine = { "nvim-lualine/lualine.nvim" }
 
 Lualine.dependencies = {
-    'nvim-tree/nvim-web-devicons',
-    'folke/noice.nvim',
+    "nvim-tree/nvim-web-devicons",
+    "folke/noice.nvim",
 }
 
-Lualine.opts = function()
+Lualine.opts = function ()
     return {
-        extensions = { 'nvim-tree' },
+        extensions = { "nvim-tree" },
         options = {
             theme = "catppuccin-" .. vim.g.catppuccin
         },
@@ -26,8 +26,8 @@ Lualine.opts = function()
     }
 end
 
-Lualine.config = function(_, opts)
-    require('lualine').setup(opts)
+Lualine.config = function (_, opts)
+    require("lualine").setup(opts)
 end
 
 return Lualine

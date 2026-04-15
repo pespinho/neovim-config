@@ -46,8 +46,8 @@ NvimTreesitterTextobjects.opts = {
 }
 
 
-NvimTreesitterTextobjects.config = function(_, opts)
-    require 'nvim-treesitter.configs'.setup(opts)
+NvimTreesitterTextobjects.config = function (_, opts)
+    require "nvim-treesitter.configs".setup(opts)
 end
 
 return NvimTreesitterTextobjects

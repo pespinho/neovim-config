@@ -29,7 +29,7 @@ Noice.opts = {
     },
 }
 
-Noice.config = function(_, opts)
+Noice.config = function (_, opts)
     require("noice").setup(opts)
 end
 

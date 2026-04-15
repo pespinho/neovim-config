@@ -3,7 +3,7 @@
 -------------------------------------------------------------------------------
 
 local autocmds = {
-    quit_pre = function()
+    quit_pre = function ()
         local tree_wins = {}
         local floating_wins = {}
         local wins = vim.api.nvim_list_wins()
@@ -12,7 +12,7 @@ local autocmds = {
             if bufname:match("NvimTree_") ~= nil then
                 table.insert(tree_wins, w)
             end
-            if vim.api.nvim_win_get_config(w).relative ~= '' then
+            if vim.api.nvim_win_get_config(w).relative ~= "" then
                 table.insert(floating_wins, w)
             end
         end
@@ -40,7 +40,7 @@ local autocmds = {
 
 local NvimTree = { "nvim-tree/nvim-tree.lua" }
 
-NvimTree.init = function()
+NvimTree.init = function ()
     vim.keymap.set("n", "<C-n>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle [n]vimtree" })
     vim.keymap.set("n", "<leader>nt", "<cmd> NvimTreeToggle <CR>", { desc = "[T]oggle" })
     vim.keymap.set("n", "<leader>nf", "<cmd> NvimTreeFindFile <CR>", { desc = "Find [f]ile" })
@@ -122,7 +122,7 @@ NvimTree.opts = {
     },
 }
 
-NvimTree.config = function(_, opts)
+NvimTree.config = function (_, opts)
     require("nvim-tree").setup(opts)
 
     vim.api.nvim_create_autocmd("QuitPre", {

@@ -13,7 +13,7 @@ IndentBlankline.opts = {
     }
 }
 
-IndentBlankline.config = function(_, opts)
+IndentBlankline.config = function (_, opts)
     require("ibl").setup(opts)
 end
 

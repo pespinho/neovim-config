@@ -10,7 +10,7 @@ local function apply(curr, win)
 
     if #newName > 0 and newName ~= curr then
         ---@type table
-        local params = vim.lsp.util.make_position_params(0, 'utf-8')
+        local params = vim.lsp.util.make_position_params(0, "utf-8")
         params.newName = newName
 
         vim.lsp.buf_request(0, "textDocument/rename", params)
@@ -39,10 +39,10 @@ local function renamer()
     vim.cmd "normal A"
     vim.cmd "startinsert"
 
-    map({ "i", "n" }, "<Esc>", function()
+    map({ "i", "n" }, "<Esc>", function ()
         vim.api.nvim_win_close(win, true)
         local id; id = vim.api.nvim_create_autocmd({ "InsertLeave" }, {
-            callback = function()
+            callback = function ()
                 vim.api.nvim_win_set_cursor(0, position)
                 vim.api.nvim_del_autocmd(id)
             end
@@ -50,10 +50,10 @@ local function renamer()
         vim.cmd.stopinsert()
     end, { buffer = 0 })
 
-    map({ "i", "n" }, "<CR>", function()
+    map({ "i", "n" }, "<CR>", function ()
         apply(currName, win)
         local id; id = vim.api.nvim_create_autocmd({ "InsertLeave" }, {
-            callback = function()
+            callback = function ()
                 vim.api.nvim_win_set_cursor(0, position)
                 vim.api.nvim_del_autocmd(id)
             end
@@ -66,37 +66,37 @@ end
 -- MODULE
 -------------------------------------------------------------------------------
 
-local LspOnAttach = function(client, bufnr)
+local LspOnAttach = function (client, bufnr)
     -- The following two autocommands are used to highlight references of the
     -- word under your cursor when your cursor rests there for a little while.
     --    See `:help CursorHold` for information about when this is executed
     --
     -- When you move your cursor, the highlights will be cleared (the second autocommand).
     if client and client.server_capabilities.documentHighlightProvider then
-        vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
             buffer = bufnr,
             callback = vim.lsp.buf.document_highlight,
         })
 
-        vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+        vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
             buffer = bufnr,
             callback = vim.lsp.buf.clear_references,
         })
     end
 
-    if pcall(function() return vim.api.nvim_buf_get_var(bufnr, "lsp_on_attach_called") end) then
+    if pcall(function () return vim.api.nvim_buf_get_var(bufnr, "lsp_on_attach_called") end) then
         return
     end
 
     vim.api.nvim_buf_set_var(bufnr, "lsp_on_attach_called", true)
 
-    vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end,
+    vim.keymap.set("n", "gD", function () vim.lsp.buf.declaration() end,
         { desc = "LSP declaration", buffer = bufnr })
-    vim.keymap.set("n", "gd", require('telescope.builtin').lsp_definitions,
+    vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions,
         { desc = "LSP definition", buffer = bufnr })
 
-    local hover = function()
-        local winid = require('ufo').peekFoldedLinesUnderCursor()
+    local hover = function ()
+        local winid = require("ufo").peekFoldedLinesUnderCursor()
         if not winid then
             vim.lsp.buf.hover()
         end
@@ -104,40 +104,40 @@ local LspOnAttach = function(client, bufnr)
 
     vim.keymap.set("n", "K", hover, { desc = "LSP hover", buffer = bufnr })
 
-    vim.keymap.set("n", "<leader>li", require('telescope.builtin').lsp_implementations,
+    vim.keymap.set("n", "<leader>li", require("telescope.builtin").lsp_implementations,
         { desc = "[I]mplementation", buffer = bufnr })
 
-    vim.keymap.set("n", "<leader>ls", function() vim.lsp.buf.signature_help() end,
+    vim.keymap.set("n", "<leader>ls", function () vim.lsp.buf.signature_help() end,
         { desc = "[S]ignature help", buffer = bufnr })
 
-    vim.keymap.set("n", "<leader>lD", require('telescope.builtin').lsp_type_definitions,
+    vim.keymap.set("n", "<leader>lD", require("telescope.builtin").lsp_type_definitions,
         { desc = "[D]efinition type", buffer = bufnr })
 
-    vim.keymap.set("n", "<leader>lr", function() renamer() end,
+    vim.keymap.set("n", "<leader>lr", function () renamer() end,
         { desc = "[R]ename", buffer = bufnr })
 
-    vim.keymap.set({ "n", "v" }, "<leader>la", function() vim.lsp.buf.code_action() end,
+    vim.keymap.set({ "n", "v" }, "<leader>la", function () vim.lsp.buf.code_action() end,
         { desc = "Code [a]ction", buffer = bufnr })
 
-    vim.keymap.set("n", "gr", require('telescope.builtin').lsp_references,
+    vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references,
         { desc = "LSP [r]eferences", buffer = bufnr })
 
-    vim.keymap.set("n", "<leader>ld", function() vim.diagnostic.open_float { border = "rounded" } end,
+    vim.keymap.set("n", "<leader>ld", function () vim.diagnostic.open_float { border = "rounded" } end,
         { desc = "Floating [d]iagnostic", buffer = bufnr })
 
     vim.keymap.set("n", "[d",
-        function() vim.diagnostic.jump { count = -1, float = { border = "rounded" } } end,
+        function () vim.diagnostic.jump { count = -1, float = { border = "rounded" } } end,
         { desc = "Go to prev [d]iagnostic", buffer = bufnr })
 
     vim.keymap.set("n", "]d",
-        function() vim.diagnostic.jump { count = 1, float = { border = "rounded" } } end,
+        function () vim.diagnostic.jump { count = 1, float = { border = "rounded" } } end,
         { desc = "Go to next [d]iagnostic", buffer = bufnr })
 
-    vim.keymap.set("n", "<leader>lo", require('telescope.builtin').lsp_document_symbols,
+    vim.keymap.set("n", "<leader>lo", require("telescope.builtin").lsp_document_symbols,
         { desc = "[O]utline symbols", buffer = bufnr })
 
     vim.keymap.set("n", "<leader>lf",
-        function() vim.lsp.buf.format({ async = true }) end, { desc = "[F]ormat buffer" })
+        function () vim.lsp.buf.format({ async = true }) end, { desc = "[F]ormat buffer" })
 
     local hl = "DiagnosticSignOk"
     vim.fn.sign_define(hl, { text = "", numhl = hl, texthl = hl })

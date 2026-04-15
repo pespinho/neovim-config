@@ -2,6 +2,6 @@
 -- LAZY - PLUGIN SPEC
 -------------------------------------------------------------------------------
 
-local NvimNio = { 'nvim-neotest/nvim-nio' }
+local NvimNio = { "nvim-neotest/nvim-nio" }
 
 return NvimNio

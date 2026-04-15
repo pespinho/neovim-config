@@ -3,9 +3,9 @@
 -------------------------------------------------------------------------------
 
 local function get_lua_options()
-    local runtime_path = vim.split(package.path, ';')
-    table.insert(runtime_path, 'lua/?.lua')
-    table.insert(runtime_path, 'lua/?/init.lua')
+    local runtime_path = vim.split(package.path, ";")
+    table.insert(runtime_path, "lua/?.lua")
+    table.insert(runtime_path, "lua/?/init.lua")
 
     local config = {
         settings = {
@@ -26,7 +26,7 @@ local function get_lua_options()
     }
 
     -- Determine the Neovim config directory once
-    local neovim_config_dir = vim.loop.fs_realpath(vim.fn.stdpath('config'))
+    local neovim_config_dir = vim.loop.fs_realpath(vim.fn.stdpath("config"))
     local cwd = vim.loop.fs_realpath(vim.fn.getcwd())
 
     -- Check if the current working directory (where Neovim was launched,
@@ -37,21 +37,21 @@ local function get_lua_options()
         config.settings.Lua.runtime = {
             -- Tell the language server which version of Lua you're using
             -- (most likely LuaJIT in the case of Neovim)
-            version = 'LuaJIT',
+            version = "LuaJIT",
             path = runtime_path,
         }
         config.settings.Lua.workspace.library = {
             -- Make the server aware of Neovim runtime files
             vim.env.VIMRUNTIME,
-            '${3rd}/luv/library'
+            "${3rd}/luv/library"
         }
         config.settings.Lua.diagnostics = {
             -- Get the language server to recognize the `vim` global
-            globals = { 'vim' },
+            globals = { "vim" },
         }
     end
 
-    return vim.tbl_deep_extend('force', config, {})
+    return vim.tbl_deep_extend("force", config, {})
 end
 
 -------------------------------------------------------------------------------
@@ -59,22 +59,22 @@ end
 -------------------------------------------------------------------------------
 
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
-local capabilities = require('blink.cmp').get_lsp_capabilities()
+local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-vim.lsp.config('*', {
+vim.lsp.config("*", {
     capabilities = capabilities,
 })
 
-vim.lsp.config('lua_ls', get_lua_options())
+vim.lsp.config("lua_ls", get_lua_options())
 
-vim.lsp.config('clangd', {
+vim.lsp.config("clangd", {
     cmd = {
         "clangd",
         "--offset-encoding=utf-16",
     }
 })
 
-vim.lsp.config('basedpyright', {
+vim.lsp.config("basedpyright", {
     settings = {
         basedpyright = {
             -- Using Ruff's import organizer
@@ -98,17 +98,17 @@ vim.lsp.config('basedpyright', {
 
 vim.lsp.inlay_hint.enable()
 
-vim.api.nvim_create_autocmd('LspAttach', {
-    callback = function(args)
-        require('user.lsp_on_attach')(
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function (args)
+        require("user.lsp_on_attach")(
             vim.lsp.get_client_by_id(args.data.client_id),
             args.buf
         )
     end,
 })
 
-vim.api.nvim_create_autocmd('BufWritePre', {
-    callback = function()
+vim.api.nvim_create_autocmd("BufWritePre", {
+    callback = function ()
         vim.lsp.buf.format({ async = false })
     end,
 })

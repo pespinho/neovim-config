@@ -3,7 +3,7 @@
 -------------------------------------------------------------------------------
 
 local highlight_factories = {
-    barbar = function(colors)
+    barbar = function (colors)
         return {
             BufferCurrent = { bg = colors.base, fg = colors.text },
             BufferCurrentIndex = { bg = colors.base, fg = colors.blue },
@@ -24,12 +24,12 @@ local highlight_factories = {
             BufferInactiveMod = { bg = colors.mantle, fg = colors.overlay0 },
         }
     end,
-    trouble = function(colors)
+    trouble = function (colors)
         return {
             TroubleNormal = { bg = colors.mantle, fg = colors.text },
         }
     end,
-    neovim = function(colors)
+    neovim = function (colors)
         return {
             MsgArea = { bg = colors.mantle, fg = colors.text },
             CmpItemMenu = { fg = colors.overlay0, italic = true }
@@ -57,7 +57,7 @@ end
 
 local Catppuccin = { "catppuccin/nvim" }
 
-Catppuccin.tag = 'v1.11.0'
+Catppuccin.tag = "v1.11.0"
 
 Catppuccin.name = "catppuccin"
 
@@ -82,7 +82,7 @@ Catppuccin.opts = {
     custom_highlights = custom_highlights,
 }
 
-Catppuccin.init = function()
+Catppuccin.init = function ()
     vim.cmd.colorscheme("catppuccin")
 end
 

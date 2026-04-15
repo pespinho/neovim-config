@@ -9,13 +9,13 @@ vim.keymap.set("i", "<C-j>", "<Down>", { desc = "Move cursor down" })
 vim.keymap.set("i", "<C-k>", "<Up>", { desc = "Move cursor up" })
 
 -- Clear search highlights on pressing <Esc> in normal mode
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear search highlights' })
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlights" })
 
 -- Move between windows with Ctrl+h/j/k/l
-vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = "Move focus to left window" })
-vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = "Move focus to right Window" })
-vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = "Move focus to window beneath" })
-vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = "Move focus to window above" })
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move focus to left window" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move focus to right Window" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move focus to window beneath" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move focus to window above" })
 
 -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
 -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
@@ -42,7 +42,7 @@ vim.keymap.set("n", "L", "g_", { desc = "Move to end of line" })
 --
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
-vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 vim.keymap.set("t", "<C-h>", "<C-\\><C-N><C-w>h", { desc = "Move focus to left window" })
 vim.keymap.set("t", "<C-l>", "<C-\\><C-N><C-w>l", { desc = "Move focus to right Window" })
 vim.keymap.set("t", "<C-j>", "<C-\\><C-N><C-w>j", { desc = "Move focus to window beneath" })

@@ -4,7 +4,7 @@
 
 local NoneLs = { "nvimtools/none-ls.nvim" }
 
-NoneLs.opts = function()
+NoneLs.opts = function ()
     local null_ls = require("null-ls")
 
     return {
@@ -14,11 +14,11 @@ NoneLs.opts = function()
             null_ls.builtins.diagnostics.markdownlint,
             null_ls.builtins.formatting.markdownlint,
         },
-        on_attach = require('user.lsp_on_attach')
+        on_attach = require("user.lsp_on_attach")
     }
 end
 
-NoneLs.config = function(_, opts)
+NoneLs.config = function (_, opts)
     require("null-ls").setup(opts)
 end
 

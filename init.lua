@@ -1,14 +1,14 @@
 -- [[ Setting options ]]
 
-require('user.options')
+require("user.options")
 
 -- [[ Basic Keymaps ]]
 
-require('user.keymaps')
+require("user.keymaps")
 
 -- [[ Custom Commands ]]
 
-require('user.custom_commands')
+require("user.custom_commands")
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 
@@ -22,4 +22,4 @@ Lazy.setup()
 
 -- [[ Configure LSP ]]
 
-require('user.lsp')
+require("user.lsp")

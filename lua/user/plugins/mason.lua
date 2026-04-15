@@ -6,16 +6,16 @@ local Mason = { "williamboman/mason.nvim" }
 
 Mason.cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" }
 
-Mason.opts = function()
+Mason.opts = function ()
     return {
-        ensure_installed = { 
-            "ansible-lint", 
-            "ansible-language-server", 
-            "clangd", 
+        ensure_installed = {
+            "ansible-lint",
+            "ansible-language-server",
+            "clangd",
             "basedpyright",
             "gopls",
             "json-lsp",
-            "lua-language-server", 
+            "lua-language-server",
             "markdownlint",
             "ruff",
             "vacuum"
@@ -46,10 +46,10 @@ Mason.opts = function()
     }
 end
 
-Mason.config = function(_, opts)
+Mason.config = function (_, opts)
     require("mason").setup(opts)
 
-    local install_all = function()
+    local install_all = function ()
         if opts.ensure_installed and #opts.ensure_installed > 0 then
             vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
         end

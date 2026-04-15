@@ -25,7 +25,7 @@ Copilot.opts = {
     },
 }
 
-Copilot.config = function(_, opts)
+Copilot.config = function (_, opts)
     require("copilot").setup(opts)
 end
 

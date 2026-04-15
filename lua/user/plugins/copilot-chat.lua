@@ -11,19 +11,19 @@ CopilotChat.dependencies = {
     "nvim-lua/plenary.nvim"
 }
 
-CopilotChat.init = function()
+CopilotChat.init = function ()
     local copilot = require("CopilotChat")
     vim.keymap.set(
         { "n", "v" },
         "<leader>ct",
-        function() copilot.toggle(CopilotChat.opts) end,
+        function () copilot.toggle(CopilotChat.opts) end,
         { desc = "CopilotChat [t]oggle" }
     )
-    vim.keymap.set({ "n" }, "<leader>cf", function() copilot.chat:focus() end, { desc = "CopilotChat [f]ocus" })
+    vim.keymap.set({ "n" }, "<leader>cf", function () copilot.chat:focus() end, { desc = "CopilotChat [f]ocus" })
     vim.keymap.set(
         { "n" },
         "<leader>cF",
-        function()
+        function ()
             CopilotChat.opts.window.width = 1.0
             copilot.close()
             copilot.open(CopilotChat.opts)
@@ -33,16 +33,16 @@ CopilotChat.init = function()
     vim.keymap.set(
         { "n" },
         "<leader>cr",
-        function()
+        function ()
             CopilotChat.opts.window.width = 80
             copilot.close()
             copilot.open(CopilotChat.opts)
         end,
         { desc = "CopilotChat [r]estore width" }
     )
-    vim.keymap.set({ "n" }, "<leader>csb", function() copilot.chat:add_sticky("#buffer") end,
+    vim.keymap.set({ "n" }, "<leader>csb", function () copilot.chat:add_sticky("#buffer") end,
         { desc = "[b]uffer" })
-    vim.keymap.set({ "n" }, "<leader>csB", function() copilot.chat:add_sticky("#buffers") end,
+    vim.keymap.set({ "n" }, "<leader>csB", function () copilot.chat:add_sticky("#buffers") end,
         { desc = "[B]uffers" })
 end
 
@@ -51,8 +51,8 @@ CopilotChat.opts = {
     sticky = { "@copilot" },
     mappings = {
         reset = {
-            normal = '<C-c>',
-            insert = '<C-c>'
+            normal = "<C-c>",
+            insert = "<C-c>"
         },
     },
     window = {
@@ -60,16 +60,16 @@ CopilotChat.opts = {
     },
 
     headers = {
-        user = '👤 You: ',
-        assistant = '🤖 Copilot: ',
-        tool = '🔧 Tool: ',
+        user = "👤 You: ",
+        assistant = "🤖 Copilot: ",
+        tool = "🔧 Tool: ",
     },
-    separator = '━━',
+    separator = "━━",
     show_folds = false,   -- Disable folding for cleaner look
     insert_at_end = true, -- Move cursor to end of buffer when inserting text
 }
 
-CopilotChat.config = function(_, opts)
+CopilotChat.config = function (_, opts)
     require("CopilotChat").setup(opts)
 end
 

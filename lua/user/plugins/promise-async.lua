@@ -2,6 +2,6 @@
 -- LAZY - PLUGIN SPEC
 -------------------------------------------------------------------------------
 
-local PromiseAsync = { 'kevinhwang91/promise-async' }
+local PromiseAsync = { "kevinhwang91/promise-async" }
 
 return PromiseAsync

@@ -4,7 +4,7 @@
 
 ---Echoes a message to the user.
 ---@param str string The message to echo
-local echo = function(str)
+local echo = function (str)
     vim.cmd("redraw")
     vim.api.nvim_echo({ { str, "Bold" } }, true, {})
 end
@@ -95,11 +95,11 @@ local Lazy = {}
 
 ---Installs the lazy plugin manager.
 function Lazy.install()
-    local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+    local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
     if not vim.uv.fs_stat(lazypath) then
         echo "  Installing lazy.nvim & plugins ..."
-        local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
+        local lazyrepo = "https://github.com/folke/lazy.nvim.git"
         shell_call({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
     end
 
@@ -108,7 +108,7 @@ end
 
 ---Sets up the lazy plugin manager and install the configured plugins.
 function Lazy.setup()
-    require('lazy').setup(specs, opts)
+    require("lazy").setup(specs, opts)
 end
 
 return Lazy

@@ -4,7 +4,7 @@
 
 local NvimWebDevicons = { "nvim-tree/nvim-web-devicons" }
 
-NvimWebDevicons.config = function(_, opts)
+NvimWebDevicons.config = function (_, opts)
     require("nvim-web-devicons").setup(opts)
 end
 

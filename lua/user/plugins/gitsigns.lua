@@ -18,7 +18,7 @@ Gitsigns.opts = {
     }
 }
 
-Gitsigns.config = function(_, opts)
+Gitsigns.config = function (_, opts)
     require("gitsigns").setup(opts)
 end
 
