@@ -4,6 +4,8 @@
 
 local Lualine = { "nvim-lualine/lualine.nvim" }
 
+Lualine.commit = "a905eee"
+
 Lualine.dependencies = {
     "nvim-tree/nvim-web-devicons",
     "folke/noice.nvim",
@@ -11,7 +13,7 @@ Lualine.dependencies = {
 
 Lualine.opts = function ()
     return {
-        extensions = { "nvim-tree" },
+        extensions = { "lazy", "mason", "nvim-dap-ui", "nvim-tree", "quickfix", "trouble" },
         options = {
             theme = "catppuccin-" .. vim.g.catppuccin
         },
