@@ -2,49 +2,26 @@
 -- LAZY - PLUGIN SPEC
 -------------------------------------------------------------------------------
 
-local Mason = { "williamboman/mason.nvim" }
+local Mason = { "mason-org/mason.nvim" }
+
+Mason.tag = "v2.2.1"
 
 Mason.cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" }
 
-Mason.opts = function ()
-    return {
-        ensure_installed = {
-            "ansible-lint",
-            "ansible-language-server",
-            "clangd",
-            "basedpyright",
-            "gopls",
-            "json-lsp",
-            "lua-language-server",
-            "markdownlint",
-            "ruff",
-            "vacuum"
-        }, -- not an option from mason.nvim
-
-        PATH = "skip",
-
-        ui = {
-            icons = {
-                package_pending = " ",
-                package_installed = "󰄳 ",
-                package_uninstalled = " 󰚌",
-            },
-
-            keymaps = {
-                toggle_server_expand = "<CR>",
-                install_server = "i",
-                update_server = "u",
-                check_server_version = "c",
-                update_all_servers = "U",
-                check_outdated_servers = "C",
-                uninstall_server = "X",
-                cancel_installation = "<C-c>",
-            },
-        },
-
-        max_concurrent_installers = 10,
-    }
-end
+Mason.opts = {
+    ensure_installed = {
+        "ansible-lint",
+        "ansible-language-server",
+        "clangd",
+        "basedpyright",
+        "gopls",
+        "json-lsp",
+        "lua-language-server",
+        "markdownlint",
+        "ruff",
+        "vacuum"
+    } -- not an option from mason.nvim
+}
 
 Mason.config = function (_, opts)
     require("mason").setup(opts)

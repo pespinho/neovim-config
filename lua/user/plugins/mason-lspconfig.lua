@@ -4,8 +4,10 @@
 
 local MasonLspconfig = { "mason-org/mason-lspconfig.nvim" }
 
+MasonLspconfig.tag = "v2.1.0"
+
 MasonLspconfig.dependencies = {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     "neovim/nvim-lspconfig",
 }
 
