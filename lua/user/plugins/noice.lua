@@ -4,6 +4,8 @@
 
 local Noice = { "folke/noice.nvim" }
 
+Noice.tag = "v4.10.0"
+
 Noice.dependencies = {
     "MunifTanjim/nui.nvim",
 }
