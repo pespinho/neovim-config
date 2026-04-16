@@ -2,6 +2,8 @@
 -- LAZY - PLUGIN SPEC
 -------------------------------------------------------------------------------
 
-local MiniIcons = { "echasnovski/mini.icons" }
+local MiniIcons = { "nvim-mini/mini.icons" }
+
+MiniIcons.tag = "v0.17.0"
 
 return MiniIcons
