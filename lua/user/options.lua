@@ -119,6 +119,9 @@ vim.opt.hlsearch = true
 -- While typing a search command, show where the pattern, as it was typed so far, matches.
 vim.opt.incsearch = true
 
+-- enable exrc -> automatically look for config file in the current working directory (.nvim.lua, .nvimrc, or .exrc)
+vim.opt.exrc = true
+
 -- add binaries installed by mason.nvim to path
 local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
 vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH
